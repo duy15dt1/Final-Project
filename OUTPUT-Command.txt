@@ -1,0 +1,1 @@
+g++ main.cpp Department.cpp Dependent.cpp Dept_locations.cpp Employee.cpp Project.cpp Work_on.cpp InOut.cpp UI/Choose_sentence.cpp UI/ChooseOpt.cpp UI/ChooseTable.cpp -o main.exe

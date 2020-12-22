@@ -1,1 +1,4 @@
-# Final-Project
+# project
+NGUYEN CHON QUAN
+TRUONG QUANG BAO
+DO THANH NHAT DUY
