@@ -1,5 +1,5 @@
-#ifndef PROJECTDATA_H_
-#define PROJECTDATA_H_
+#ifndef _DATAACCESS_PROJECT_DATA_H_
+#define _DATAACCESS_PROJECT_DATA_H_
 #include <vector>
 #include "../BusinessObject/Project.h"
 

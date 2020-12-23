@@ -1,6 +1,6 @@
 //create a class to contain information about project
-#ifndef PROJECT_H_
-#define PROJECT_H_
+#ifndef _PROJECT_H_
+#define _PROJECT_H_
 #include <string>  
 using namespace std;  
 class Project{

@@ -1,6 +1,6 @@
 //create a class to contain information about dependent
-#ifndef DEPENDENT_H_
-#define DEPENDENT_H_
+#ifndef _DEPENDENT_H_
+#define _DEPENDENT_H_
 #include <string>    
 using namespace std;
 class Dependent{

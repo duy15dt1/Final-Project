@@ -1,5 +1,5 @@
-#ifndef PROJECTDISPLAY_H_
-#define PROJECTDISPLAY_H_
+#ifndef _UI_ROJECT_DISPLAY_H_
+#define _UI_ROJECT_DISPLAY_H_
 #include "../DataAccess/ProjectData.h"
 #include "../BusinessObject/Project.h"
 #include <iostream>
