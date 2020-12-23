@@ -1,14 +1,18 @@
 #include <iostream>
+#include "BusinessObject/Department.h"
 #include "BusinessObject/Dependent.h"
-#include "DataAccess/DependentData.h"
-#include "UI/DependentDisplay.h"
+#include "BusinessObject/Dept_locations.h"
+#include "BusinessObject/Employee.h"
 #include "BusinessObject/Project.h"
-#include "DataAccess/ProjectData.h"
-#include "UI/ProjectDisplay.h"
+#include "BusinessObject/Work_on.h"
+#include "DataAccess/EmployeeData.h"
+#include "DataAccess/Dept_locationsData.h"
+#include "UI/DisplayEmployee.h"
+#include "UI/DisplayDept_locations.h"
+#include "UI/Choose/choose_sentence.h"
+#include <vector>
 using namespace std;
 
 int main() {
-    DisplayDependentData();
-    DisplayProjectData();
-    return 0;
+    Choose_sentence();
 }

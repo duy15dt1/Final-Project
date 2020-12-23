@@ -6,11 +6,14 @@ class Dept_locations {
 private:
     int Dnumber;          // Number of department
     string Dlocation;     // Location of department
+    int Id;
+    static int Idnew;
 public:
     Dept_locations();
     Dept_locations(int Dnumber, string Dlocation);
-    friend istream& operator >> (istream& is, Dept_locations& d);
-    friend ostream& operator << (ostream& os, Dept_locations& d);
+    int GetId();
+    string ToString();
+    friend istream& operator >> (istream& , Dept_locations& );
 };
 
 #endif

@@ -5,25 +5,29 @@ using namespace std;
 class Employee {
 private: 
     string Fname;     // First name of employee
-    char Minit;       // Middle name of employe
+    string Minit;       // Middle name of employe
     string Lname;     // Last name of employee
-    double Ssn;       // Social security number of employee
+    int Ssn;       // Social security number of employee
     string Bdate;     // Birth day of employee
     string Address;   // Address of employee
     char Sex;         // Sex of employee
     int Salary;       // Salary of employee
-    double Superssn;  // Superssn of employee
+    int Superssn;  // Superssn of employee
     int Dno;          // Dno of employee
-    int Id;           // Id of employee
-public:
+    int Id;
+    static int Idnew;
+public:    
     // Default constructor
     Employee(); 
           
     // Constructor with input parameters
-    Employee(string Fname, char Minit, string Lname, double Ssn, 
-    string Bdate, string Address, char Sex, int Salary, double Superssn, int Dno);   
+    Employee(string Fname, string Minit, string Lname, int Ssn, 
+    string Bdate, string Address, char Sex, int Salary, int Superssn, int Dno);   
+    Employee(const Employee& );
+    void IncreaseId();
+    int& GetId();
+    string ToString();
     friend istream& operator >> (istream& is, Employee& emp);
-    friend ostream& operator << (ostream& os, Employee& emp);
 };
 
 #endif
