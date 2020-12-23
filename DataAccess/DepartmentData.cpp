@@ -1,5 +1,7 @@
 #include "DepartmentData.h"
-
+    // Department d1("Research",5,333445555,"1988-05-22");
+    // Department d2("Administration",4,987654321,"1995-01-01");
+    // Department d3("Headquaters",1,888665555,"1981-06-19");
 //Contructor function of DepartmentData
 DepartmentData::DepartmentData(){
     _maxId = 0;

@@ -29,4 +29,4 @@ string Department::ToString(){
     s += Mgrstartdate + "}";
     return s;
 }
-int Department::IdNew = 0;             //    Identification of department
+int Department::IdNew = 0;             //     Identification of department for update
