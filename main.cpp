@@ -1,24 +1,14 @@
 #include <iostream>
-#include "Department.h"
-#include "Dependent.h"
-#include "Dept_locations.h"
-#include "Employee.h"
-#include "Project.h"
-#include "Work_on.h"
-#include "InOut.h"
-#include "UI/Choose_sentence.h"
-#include "UI/ChooseOpt.h"
-#include "UI/ChooseTable.h"
-#include <vector>
+#include "BusinessObject/Dependent.h"
+#include "DataAccess/DependentData.h"
+#include "UI/DependentDisplay.h"
+#include "BusinessObject/Project.h"
+#include "DataAccess/ProjectData.h"
+#include "UI/ProjectDisplay.h"
 using namespace std;
 
-vector<Employee> empArr;
-vector<Dept_locations> deptArr;
-vector<Dependent> depeArr;
-vector<Department> departArr;
-vector<Work_on> wArr;
-vector<Project> pArr;
 int main() {
-    Choose_sentence();
-    
+    DisplayDependentData();
+    DisplayProjectData();
+    return 0;
 }
