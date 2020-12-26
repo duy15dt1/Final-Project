@@ -1,12 +1,6 @@
 #include "InOut.h"
 // Overloading extraction operator 
 
-istream& operator >> (istream& is, Dept_locations& d) {
-    cout << "Number of department: "; is >> d.Dnumber;
-    cout << "Location of department: "; is >> d.Dlocation;
-    return is;
-}
-
 istream& operator >> (istream& is, Employee& emp) {   
     is.ignore();       
     cout << "First name of employee "; getline(is, emp.Fname);

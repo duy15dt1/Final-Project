@@ -1,16 +1,10 @@
 #include "Employee.h"
 // Default constructor
 Employee::Employee() {
-    Fname = Lname = Bdate = Address = Minit = " ";  // Assign variables Fname, Lname, Bdate, Address by ""
-    Sex = ' '; 
-    Bdate = Address = Sex = Salary = 0;
-    Superssn = Dno = Ssn = 0;
-
 }
 
 // Constructor with input parameters
-Employee::Employee(string Fname, string Minit, string Lname, int Ssn, 
-string Bdate, string Address, char Sex, int Salary, int Superssn, int Dno) {
+Employee::Employee(string Fname, string Minit, string Lname, int Ssn, string Bdate, string Address, char Sex, int Salary, int Superssn, int Dno) {
     this->Fname = Fname;
     this->Minit = Minit;
     this->Lname = Lname;
@@ -23,22 +17,12 @@ string Bdate, string Address, char Sex, int Salary, int Superssn, int Dno) {
     this->Dno = Dno;
 }
 
-Employee::Employee(const Employee& emp) {
-    Fname = emp.Fname;   
-    Minit = emp.Minit;
-    Lname = emp.Lname;     
-    Ssn = emp.Ssn;       
-    Bdate = emp.Bdate;     
-    Address = emp.Address;   
-    Sex = emp.Sex;         
-    Salary = emp.Salary;       
-    Superssn = emp.Superssn;  
-    Dno = emp.Dno;        
-    Id = emp.Id;
-}
-
 int& Employee::GetId() {
     return Id;
+}
+
+int& Employee::GetIdNew() {
+    return Idnew;
 }
 
 string Employee::ToString() {
@@ -55,6 +39,21 @@ string Employee::ToString() {
     s += "SuperSSN: " + to_string(Superssn) + ", ";
     s += "DNO: " + to_string(Dno) + "}";
     return s;
+}
+
+json Employee::ToJson(){
+    json j;
+    j["Minit"] = Minit;
+    j["Lname"] = Lname;
+    j["Ssn"] = Ssn;
+    j["Bdate"] = Bdate;
+    j["Address"] = Address;
+    j["Fname"] = Fname;
+    j["Sex"] = string(1, Sex);
+    j["Salary"] = Salary;
+    j["Superssn"] = Superssn;
+    j["Dno"] = Dno;
+    return j;
 }
 
 void Employee::IncreaseId() {

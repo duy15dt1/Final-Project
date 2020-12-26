@@ -1,1 +1,1 @@
-g++ main.cpp BusinessObject/Department.cpp BusinessObject/Dependent.cpp BusinessObject/Dept_locations.cpp BusinessObject/Employee.cpp BusinessObject/Project.cpp BusinessObject/Work_on.cpp DataAccess/EmployeeData.cpp DataAccess/Dept_locationsData.cpp UI/DisplayEmployee.cpp UI/DisplayDept_locations.cpp UI/Choose/Choose_sentence.cpp UI/Choose/ChooseOpt.cpp UI/Choose/ChooseTable.cpp UI/Input/InOut.cpp -o main.exe
+g++ main.cpp BusinessObject/Employee.cpp DataAccess/EmployeeData.cpp UI/UI_Choose.cpp UI/Input/InOut.cpp libs/json.hpp libs/util.cpp -o main.exe

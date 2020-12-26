@@ -1,8 +1,11 @@
 #ifndef _EMPLOYEE_H_
 #define _EMPLOYEE_H_
 #include <string>
+#include "BusinessObject.h"
+#include "../libs/json.hpp"
 using namespace std;
-class Employee {
+using json = nlohmann::json;
+class Employee : public BusinessObject {
 private: 
     string Fname;     // First name of employee
     string Minit;       // Middle name of employe
@@ -19,14 +22,13 @@ private:
 public:    
     // Default constructor
     Employee(); 
-          
     // Constructor with input parameters
-    Employee(string Fname, string Minit, string Lname, int Ssn, 
-    string Bdate, string Address, char Sex, int Salary, int Superssn, int Dno);   
-    Employee(const Employee& );
+    Employee(string Fname, string Minit, string Lname, int Ssn, string Bdate, string Address, char Sex, int Salary, int Superssn, int Dno);   
     void IncreaseId();
     int& GetId();
+    int& GetIdNew();
     string ToString();
+    json ToJson();
     friend istream& operator >> (istream& is, Employee& emp);
 };
 
