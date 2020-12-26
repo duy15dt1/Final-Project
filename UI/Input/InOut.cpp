@@ -39,3 +39,22 @@ istream& operator >> (istream& is, Work_on& workon){
     //    Overtime hours
     return is;
 }
+
+istream& operator >> (istream& is, Dependent& dep) {   
+    is.ignore();       
+    cout << "Social security number of employee "; is >> dep.Essn;
+    cout << "Name of dependent "; getline(is, dep.Dependent_name);
+    cout << "Birthday of employee "; getline(is, dep.Bdate);
+    cout << "Sex of employee "; is >> dep.Sex;
+    cout << "Realationship of dependent "; is >> dep.Relationship;
+    return is;
+}
+
+istream& operator >> (istream& is, Project& pro) {   
+    is.ignore();       
+    cout << "Name of project "; getline(is, pro.Pname)
+    cout << "Serial number of project"; is >> pro.Dnum;
+    cout << "Location of project "; getline(is, pro.Plocation);
+    cout << "Number of department doing project "; is >> pro.Pnumber;
+    return is;
+}
