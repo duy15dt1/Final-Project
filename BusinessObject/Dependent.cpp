@@ -35,7 +35,7 @@ json Dependent::ToJson(){
     json j;
     j["Essn"] = Essn;
     j["Dependent_name"] = Dependent_name;
-    j["Sex"] = Sex;
+    j["Sex"] = string(1, Sex);
     j["Bdate"] = Bdate;
     j["Realationship"] = Relationship;
     return j;

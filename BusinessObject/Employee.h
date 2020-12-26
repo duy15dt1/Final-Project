@@ -29,6 +29,9 @@ public:
     int& GetIdNew();
     string ToString();
     json ToJson();
+    string GetName();
+    int GetSuperssn();
+    int GetSsn();
     friend istream& operator >> (istream& is, Employee& emp);
 };
 

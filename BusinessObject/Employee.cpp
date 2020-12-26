@@ -60,4 +60,16 @@ void Employee::IncreaseId() {
     Id = ++Idnew;
 }
 
+string Employee::GetName() {
+    return Fname + " " + Lname;
+}
+
+int Employee::GetSuperssn() {
+    return Superssn;
+}
+
+int Employee::GetSsn() {
+    return Ssn;
+}
+
 int Employee::Idnew = 0;

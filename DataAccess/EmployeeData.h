@@ -3,10 +3,11 @@
 #include <vector>
 #include "../BusinessObject/Employee.h"
 #include "DataBusinessObject.h"
+#include <string.h> 
 class EmployeeData : public DataBusinessObject {
 private:
     vector<Employee> _employeeArr;
-    int _maxId = 5;
+    int _maxId;
 public:
     EmployeeData();
     int GetMaxId();
@@ -18,5 +19,6 @@ public:
     void Delete(int );
     void Read(string );
     int ExportToFile(string );
+    void Cau2(string );
 };
 #endif

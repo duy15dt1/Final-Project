@@ -1,8 +1,56 @@
 #include "UI_Choose.h"
-void UI_Choose::DisplayEmployees(EmployeeData& employeeData) {
+void UI_Choose::Display(EmployeeData& employeeData) {
     for (int i = 0; i < employeeData.GetSize(); i++) {
         Employee e = employeeData.Get(i);
         cout << e.GetId() << " " << e.ToString() << endl << endl;
+    }
+}
+
+void UI_Choose::Display(Dept_locationsData& ) {
+    for (int i = 0; i < deptdata.GetSize(); i++) {
+        Dept_locations dept = deptdata.Get(i);
+        cout << dept.GetId() << " " << dept.ToString() << endl << endl;
+    }
+}
+
+void UI_Choose::Display(DepartmentData& departmentdata) {
+    for (int i = 0; i < departmentdata.GetSize(); i++) {
+        Department department = departmentdata.Get(i);
+        cout << department.GetId() << " " << department.ToString() << endl << endl;
+    }
+}
+void UI_Choose::Display(Work_onData& work_ondata) {
+    for (int i = 0; i < work_ondata.GetSize(); i++) {
+        Work_on work = work_ondata.Get(i);
+        cout << work.GetId() << " " << work.ToString() << endl << endl;
+    }
+}
+
+void UI_Choose::Display(DependentData& dependentdata) {
+    for (int i = 0; i < dependentdata.GetSize(); i++) {
+        Dependent d = dependentdata.Get(i);
+        cout << d.GetId() << " " << d.ToString() << endl << endl;
+    }
+}
+
+void UI_Choose::Display(ProjectData& projectdata) {
+    for (int i = 0; i < projectdata.GetSize(); i++) {
+        Project project = projectdata.Get(i);
+        cout << project.GetId() << " " << project.ToString() << endl << endl;
+    }
+}
+
+void UI_Choose::DisplayAllEmpUnderSupvr(string name) {
+    int ssn;
+    for (int i = 0; i < employeedata.GetSize(); i++) {
+        if (name == employeedata.Get(i).GetName()) {
+            ssn =  employeedata.Get(i).GetSsn();
+            for (int j = 0; j < employeedata.GetSize(); j++) {
+                if ( employeedata.Get(j).GetSuperssn() == ssn) {
+                    cout << employeedata.Get(j).GetName() << endl;
+                }
+            }
+        }
     }
 }
 
@@ -31,6 +79,12 @@ void UI_Choose::Choose_sentence() {
                 ChooseTable();
                 break;
             case 2:
+                {
+                    string name;
+                    cout << "Enter name of supervisor: ";
+                    cin >> name;
+                    DisplayAllEmpUnderSupvr(name);
+                }
                 break;
             case 3:
                 break;
@@ -129,17 +183,72 @@ void UI_Choose::ChooseOpt(int n)
             case 1:
                 if (n == 1) {
                     employeedata.Add();
-                    DisplayEmployees(employeedata);  
+                    Display(employeedata);  
+                }
+                else if (n == 2) {
+                    departmentdata.Add();
+                    Display(departmentdata);
+                }
+                else if (n == 3) {
+                    deptdata.Add();
+                    Display(deptdata);
+                }
+                else if (n == 4) {
+                    projectdata.Add();
+                    Display(projectdata);
+                }
+                else if (n == 5) {
+                    work_ondata.Add();
+                    Display(work_ondata);
+                }
+                else if (n == 6) {
+                    dependentdata.Add();
+                    Display(dependentdata);
                 }
                 break;
             case 2:
                 if (n == 1) {
                     int id;
-                    cout << "Enter the person who idou want to edit: ";
+                    cout << "Enter the person who you want to edit: ";
                     cin >> id;
                     employeedata.Edit(id - 1);    
-                    DisplayEmployees(employeedata);  
+                    Display(employeedata);  
                 
+                }
+                else if (n == 2) {
+                    int id;
+                    cout << "Enter the person who you want to edit: ";
+                    cin >> id;
+                    departmentdata.Edit(id - 1);    
+                    Display(departmentdata);
+                }
+                else if (n == 3) {
+                    int id;
+                    cout << "Enter the person who you want to edit: ";
+                    cin >> id;
+                    deptdata.Edit(id - 1);    
+                    Display(deptdata);  
+                } 
+                else if (n == 4) {
+                    int id;
+                    cout << "Enter the person who you want to edit: ";
+                    cin >> id;
+                    projectdata.Edit(id - 1);    
+                    Display(projectdata);  
+                }
+                else if (n == 5) {
+                    int id;
+                    cout << "Enter the person who you want to edit: ";
+                    cin >> id;
+                    work_ondata.Edit(id - 1);     
+                    Display(work_ondata);
+                }
+                else if (n == 6) {
+                    int id;
+                    cout << "Enter the person who you want to edit: ";
+                    cin >> id;
+                    dependentdata.Edit(id - 1);     
+                    Display(dependentdata);
                 }
                 break;
             case 3:
@@ -148,18 +257,76 @@ void UI_Choose::ChooseOpt(int n)
                     cout << "Enter the person who yoid want to delete: ";
                     cin >> id;
                     employeedata.Delete(id);
-                    DisplayEmployees(employeedata);
+                    Display(employeedata);
                 
+                }
+                else if (n == 2) {
+                    int id;
+                    cout << "Enter the person who yoid want to delete: ";
+                    cin >> id;
+                    departmentdata.Delete(id);
+                    Display(departmentdata);
+                
+                }
+                else if (n == 3) {
+                    int id;
+                    cout << "Enter the person who yoid want to delete: ";
+                    cin >> id;
+                    deptdata.Delete(id);
+                    Display(deptdata);
+                
+                }
+                else if (n == 4) {
+                    int id;
+                    cout << "Enter the person who yoid want to delete: ";
+                    cin >> id;
+                    projectdata.Delete(id);
+                    Display(projectdata);
+                
+                }
+                else if (n == 5) {
+                    int id;
+                    cout << "Enter the person who yoid want to delete: ";
+                    cin >> id;
+                    work_ondata.Delete(id);
+                    Display(work_ondata);
+                }
+                else if (n == 6) {
+                    int id;
+                    cout << "Enter the person who yoid want to delete: ";
+                    cin >> id;
+                    dependentdata.Delete(id);
+                    Display(dependentdata);
                 }
                 break;
             case 4:
                 if (n == 1) {
                     employeedata.Read("EmployeeData.data");
-                    DisplayEmployees(employeedata);
+                    Display(employeedata);
+                }
+                if (n == 2) {
+                    departmentdata.Read("DepartmentData.data");
+                    Display(departmentdata);
+                }
+                else if (n == 3) {
+                    deptdata.Read("Dept_locationsData.data");
+                    Display(deptdata);
+                }
+                else if (n == 4) {
+                    projectdata.Read("ProjectData.data");
+                    Display(projectdata);                
+                }
+                else if (n == 5) {
+                    work_ondata.Read("Work_onData.data");
+                    Display(work_ondata);
+                }
+                else if (n == 6) {
+                    dependentdata.Read("DependentData.data");
+                    Display(dependentdata);
                 }
                 break;
             case 5:
-                employeedata.ExportToFile("EmployeeData.data");
+                k = false;
                 break;
             case 0:
                 exit('0');

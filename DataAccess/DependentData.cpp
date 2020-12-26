@@ -23,11 +23,11 @@ void DependentData::Read(string filename){
         json j = json::parse(buff);
         string sex = j["Sex"];
         Dependent d(
-        j["Essn"],
-        j["Dependent_name"],
-        sex[0],
-        j["Bdate"],
-        j["Realationship"]
+            j["Essn"],
+            j["Dependent_name"],
+            sex[0],
+            j["Bdate"],
+            j["Realationship"]
         );
         d.IncreaseId();
         _dependentArr.push_back(d);

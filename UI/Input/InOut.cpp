@@ -4,8 +4,7 @@
 istream& operator >> (istream& is, Employee& emp) {   
     is.ignore();       
     cout << "First name of employee "; getline(is, emp.Fname);
-    cout << "Middle nane of employee "; is >> emp.Minit;
-    is.ignore();
+    cout << "Middle nane of employee "; is >> emp.Minit; is.ignore();
     cout << "Last name of employee "; getline(is, emp.Fname);
     cout << "Social security number of employee "; is >> emp.Ssn;
     cout << "Birthday of employee "; getline(is, emp.Bdate);
@@ -16,6 +15,13 @@ istream& operator >> (istream& is, Employee& emp) {
     cout << "Department Number of employee "; is >> emp.Dno;
     return is;
 }
+
+istream& operator >> (istream& is, Dept_locations& dept) {
+    cout << "Number of Department: "; is >> dept.Dnumber; is.ignore();
+    cout << "Location of Department: "; getline(is, dept.Dlocation);
+    return is;
+}
+
 istream& operator >> (istream& is, Department& depa){
     is.ignore();
     //    Name of department
@@ -40,19 +46,21 @@ istream& operator >> (istream& is, Work_on& workon){
     return is;
 }
 
-istream& operator >> (istream& is, Dependent& dep) {   
-    is.ignore();       
+istream& operator >> (istream& is, Dependent& dep) {         
     cout << "Social security number of employee "; is >> dep.Essn;
+    is.ignore(); 
     cout << "Name of dependent "; getline(is, dep.Dependent_name);
+    is.ignore();  
     cout << "Birthday of employee "; getline(is, dep.Bdate);
     cout << "Sex of employee "; is >> dep.Sex;
-    cout << "Realationship of dependent "; is >> dep.Relationship;
+    is.ignore();  
+    cout << "Realationship of dependent "; getline(is, dep.Relationship);
     return is;
 }
 
 istream& operator >> (istream& is, Project& pro) {   
     is.ignore();       
-    cout << "Name of project "; getline(is, pro.Pname)
+    cout << "Name of project "; getline(is, pro.Pname);
     cout << "Serial number of project"; is >> pro.Dnum;
     cout << "Location of project "; getline(is, pro.Plocation);
     cout << "Number of department doing project "; is >> pro.Pnumber;

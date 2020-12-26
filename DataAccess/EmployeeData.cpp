@@ -44,15 +44,6 @@ void EmployeeData::Read(string filename){
 int EmployeeData::GetMaxId(){
     return _maxId;
 }
-int EmployeeData::PushBack(Employee e){
-    e.IncreaseId();
-    if (_maxId < e.GetId()){
-        _maxId = e.GetId();
-    }
-    _employeeArr.push_back(e);
-    return _maxId;
-}
-
 
 Employee& EmployeeData::Get(int i) {
     return _employeeArr[i];
@@ -92,3 +83,4 @@ int EmployeeData::ExportToFile(string filename){
     outFile.close();
     return 1;
 }
+

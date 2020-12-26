@@ -4,7 +4,10 @@ Work_on::Work_on() {
 }; 
 
 //Contructor with input parameters     
-Work_on::Work_on(double Essn, int Pno, double Hours){
+Work_on::Work_on(int Essn, int Pno, double Hours){
+    this->Essn = Essn;
+    this->Pno = Pno;
+    this->Hours = Hours;
 }
 //GetId() is a function that get ID value of overtime hour sheet 
 int& Work_on::GetId(){
