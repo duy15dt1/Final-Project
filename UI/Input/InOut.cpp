@@ -16,3 +16,26 @@ istream& operator >> (istream& is, Employee& emp) {
     cout << "Department Number of employee "; is >> emp.Dno;
     return is;
 }
+istream& operator >> (istream& is, Department& depa){
+    is.ignore();
+    //    Name of department
+    cout << "Name of department "; getline(is, depa.Dname); 
+    //    Number of department 
+    cout << "Number of department "; is >> depa.Dnumber;
+    //    Social security number of manager 
+    cout << "Social security number of manager "; is >> depa.Mgrssn;
+    //    Department management start date of manager
+    is.ignore();
+    cout << "Department management start date of manager "; getline(is, depa.Mgrstartdate);
+    return is;
+}
+istream& operator >> (istream& is, Work_on& workon){
+    //    Social security number of employee
+    cout << "Social security number of employee "; is >> workon.Essn;
+    //    Number of project 
+    cout << "Number of project "; is >> workon.Pno;
+    //    Overtime hours
+    cout << "Overtime hours of employee ";is >> workon.Hours;
+    //    Overtime hours
+    return is;
+}
