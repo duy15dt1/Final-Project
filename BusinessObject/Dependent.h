@@ -26,6 +26,8 @@ public:
     string ToString();
     void IncreaseId();
     json ToJson();
+    string GetRelationship();
+    int GetEssn();
     friend istream& operator >> (istream& is, Dependent& dep);
 };
 

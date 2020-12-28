@@ -41,4 +41,13 @@ json Department::ToJson(){
 void Department::IncreaseId(){
     Id = ++IdNew;
 }
+string Department::GetDepartmentName() {
+    return Dname;
+}
+int Department::GetDepartmentNumber() {
+    return Dnumber;
+}
+int Department::GetMgrssn() {
+    return Mgrssn;
+}
 int Department::IdNew = 0;             //     Identification of department for update

@@ -41,4 +41,14 @@ void Project::IncreaseId(){
     Id = ++ IdNew;
 }
 
+int Project::GetPnumber() {
+    return Pnumber;
+}
+string Project::GetPname() {
+    return Pname;
+}
+int Project::GetDnum() {
+    return Dnum;
+}
+
 int Project::IdNew = 0;

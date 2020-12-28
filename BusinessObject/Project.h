@@ -25,6 +25,9 @@ public:
     void IncreaseId();
     string ToString();
     json ToJson();
+    int GetPnumber();
+    string GetPname();
+    int GetDnum();
     friend istream& operator >> (istream& is, Project& pro);
 };
 #endif

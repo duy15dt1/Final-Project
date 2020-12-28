@@ -54,6 +54,130 @@ void UI_Choose::DisplayAllEmpUnderSupvr(string name) {
     }
 }
 
+void UI_Choose::DisplayAllEmpHasChild() {
+    for (int i = 0; i < dependentdata.GetSize(); i++) {
+        if (dependentdata.Get(i).GetRelationship() == "DAUGHTER" || dependentdata.Get(i).GetRelationship() == "SON") {
+            int ssn = dependentdata.Get(i).GetEssn();
+            for (int j = 0; j < employeedata.GetSize(); j++) {
+                if (employeedata.Get(j).GetSsn() == ssn) {
+                    cout << employeedata.Get(j).GetName() << " have a " << dependentdata.Get(i).GetRelationship() << endl;
+                }
+            }
+        }
+    }
+}
+
+void UI_Choose::DisplayAverageSalaryEmpInDepartment(string& departmentname) {
+    int pnumber;
+    for (int i = 0; i < departmentdata.GetSize(); i++) {
+        if (departmentdata.Get(i).GetDepartmentName() == departmentname) {
+            cout << "Average salary of employee in " << departmentname << ": ";
+            pnumber = departmentdata.Get(i).GetDepartmentNumber();
+            break;
+        }
+    }       
+    double average = 0;
+    int count = 0;
+    for (int j = 0; j < employeedata.GetSize(); j++) {
+        if (employeedata.Get(j).GetDno() == pnumber) {
+            count++;
+            average += employeedata.Get(j).GetSalary();
+        }
+    }
+    average = average / count;
+    cout << average;
+}
+
+void UI_Choose::DisplayAllEmpInDepartment(int& departmentnumber, string& projectname, int& minhours) {
+    int pnumber, essn;
+    cout << "All Employee in department: " << departmentnumber << ", work at: " << projectname << ", min hours: " << minhours <<endl;
+    for (int i = 0; i < projectdata.GetSize(); i++) {
+        if (projectdata.Get(i).GetDnum() == departmentnumber && projectdata.Get(i).GetPname() == projectname) {
+            pnumber = projectdata.Get(i).GetPnumber();
+            break;
+        }
+    }
+    cout << pnumber << endl;
+    for (int j = 0; j < work_ondata.GetSize(); j++) {
+        if (work_ondata.Get(j).GetPno() == pnumber && work_ondata.Get(j).GetHours() > minhours) {
+            essn = work_ondata.Get(j).GetEssn();
+            for (int k = 0; k < employeedata.GetSize(); k++) {
+                if (employeedata.Get(k).GetSsn() == essn && employeedata.Get(k).GetDno() == departmentnumber) {
+                    cout << employeedata.Get(k).GetName() << " ";
+                }
+            }
+        }
+    }
+}
+
+void UI_Choose::DisplayAllEmpNoProject(){
+    bool k = true;
+    for (int i = 0; i < employeedata.GetSize(); i++){
+        for(int j = 0; j < work_ondata.GetSize(); j++){
+            if (employeedata.Get(i).GetSsn() == work_ondata.Get(j).GetEssn()){
+                k = false;
+                break;
+            }
+        }
+    if(k) cout << employeedata.Get(i).GetId() << " " << employeedata.Get(i).ToString() << endl;
+    k = true;
+    }
+}
+
+void UI_Choose:: DisplayManaNoDependent(){
+    bool k = true;
+    for (int i = 0; i < departmentdata.GetSize(); i++){
+        for(int j=0; j< dependentdata.GetSize(); j++){
+            if(departmentdata.Get(i).GetMgrssn() == dependentdata.Get(j).GetEssn()){
+                k = false;
+                break;
+            }
+        }
+        if(k){
+            cout << "The last name of managers who haven't dependent people : " << endl;
+            for(int l=0; l<employeedata.GetSize(); l++){
+                if(departmentdata.Get(i).GetMgrssn() == employeedata.Get(l).GetSsn()){
+                    cout <<  employeedata.Get(l).GetName()<<endl;
+                }
+            }
+        }
+        k = true;
+    }
+}
+
+void UI_Choose::TotalWorkHours(int& n)
+{
+    bool rf;
+    double sum = 0;
+    for (int i = 0; i < projectdata.GetSize(); i++) {
+        if (projectdata.Get(i).GetPnumber() == n) {
+            cout << "Name of Project: "<< projectdata.Get(i).GetPname() << ", Total work hours: ";
+            break;
+        }
+        rf == true;
+    }
+    for (int j = 0; j < work_ondata.GetSize(); j++) {
+        if (work_ondata.Get(j).GetPno() == n) {
+            sum += work_ondata.Get(j).GetHours();
+        }
+    }
+    cout << sum;
+    cout << endl;
+}
+
+void UI_Choose::AverageIncomeBySex(char& s){
+    int count = 0;
+    float TotalIncome = 0;
+    for (int i=0; i < employeedata.GetSize(); i++){
+        if (employeedata.Get(i).GetSex() == s){
+            TotalIncome += employeedata.Get(i).GetSalary();
+            count++;
+        }
+    }
+    cout << "Average income by "<<s<<" is: "<< TotalIncome/count<<endl;
+    cout << endl;
+}
+
 void UI_Choose::Choose_sentence() {
     cout << endl;
     do {
@@ -87,20 +211,60 @@ void UI_Choose::Choose_sentence() {
                 }
                 break;
             case 3:
+                DisplayAllEmpHasChild();
                 break;
             case 4:
+                {
+                    int pronum;
+                    cout << "Enter project number: ";
+                    cin >> pronum;
+                    TotalWorkHours(pronum);
+                }
                 break;
             case 5:
+                DisplayAllEmpNoProject();
                 break;
             case 6:
+                {
+                    string name;
+                    cout << "Enter name of department: ";
+                    cin >> name;
+                    DisplayAverageSalaryEmpInDepartment(name);   
+                }
                 break;
             case 7:
+                {
+                    char s;
+                    cout << "Enter the sex: ";
+                    cin >> s;
+                    AverageIncomeBySex(s); 
+                }
                 break;
             case 8:
+                DisplayManaNoDependent();
                 break;
             case 9:
+                {
+                    int departmentnumber, minhours;
+                    string projectname;
+                    cout << "Enter department number: ";
+                    cin >> departmentnumber;
+                    cout << "Enter project name: ";
+                    cin >> projectname;
+                    cout << "Enter min hours: ";
+                    cin >> minhours;
+                    DisplayAllEmpInDepartment(departmentnumber, projectname, minhours);
+                }
                 break;
             case 10:
+                {
+                    employeedata.ExportToFile("EmployeeData.data");
+                    departmentdata.ExportToFile("DepartmentData.Data");
+                    dependentdata.ExportToFile("DependentData.data");
+                    work_ondata.ExportToFile("Work_onData.data");
+                    projectdata.ExportToFile("ProjectData.data");
+                    deptdata.ExportToFile("Dept_locationsData.data");
+                }
                 break;
             case 0:
                 exit('0');

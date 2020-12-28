@@ -32,6 +32,9 @@ public:
     string GetName();
     int GetSuperssn();
     int GetSsn();
+    int GetDno();
+    int GetSalary();
+    char GetSex();
     friend istream& operator >> (istream& is, Employee& emp);
 };
 

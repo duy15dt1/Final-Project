@@ -26,6 +26,9 @@ public:
     //ToString() is a function that convert the informations of department to string type
     string ToString();
     json ToJson();
+    string GetDepartmentName();
+    int GetDepartmentNumber();
+    int GetMgrssn();
     friend istream& operator >> (istream& is, Department& depa);
 };
 

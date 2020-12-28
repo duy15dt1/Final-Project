@@ -72,4 +72,17 @@ int Employee::GetSsn() {
     return Ssn;
 }
 
+int Employee::GetDno() {
+    return Dno;
+}
+
+int Employee::GetSalary() {
+    return Salary;
+}
+
+char Employee::GetSex() {
+    return Sex;
+}
+
+
 int Employee::Idnew = 0;

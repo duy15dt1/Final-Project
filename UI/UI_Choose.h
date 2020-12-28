@@ -27,4 +27,11 @@ public:
     void ChooseTable();
     void ChooseOpt(int n);
     void DisplayAllEmpUnderSupvr(string );
+    void DisplayAllEmpHasChild();
+    void DisplayAverageSalaryEmpInDepartment(string& );
+    void DisplayAllEmpInDepartment(int& , string&, int& );
+    void DisplayManaNoDependent();
+    void DisplayAllEmpNoProject();
+    void TotalWorkHours(int& );
+    void AverageIncomeBySex(char& );
 };

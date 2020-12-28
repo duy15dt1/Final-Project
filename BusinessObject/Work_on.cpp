@@ -36,4 +36,15 @@ json Work_on::ToJson(){
 void Work_on::IncreaseId(){
     Id = ++IdNew;
 }
+
+int Work_on::GetPno() {
+    return Pno;
+}
+int Work_on::GetEssn() {
+    return Essn;
+}
+
+double Work_on::GetHours() {
+    return Hours;
+}
 int Work_on::IdNew = 0;

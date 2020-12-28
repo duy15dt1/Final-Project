@@ -25,6 +25,9 @@ public:
     //ToString() is a function that convert the informations of work_on sheet to string type
     string ToString();
     json ToJson();
+    int GetPno();
+    int GetEssn();
+    double GetHours();
     friend istream& operator >> (istream& is, Work_on& workon);
 };
 #endif 

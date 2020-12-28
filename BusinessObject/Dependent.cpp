@@ -37,12 +37,20 @@ json Dependent::ToJson(){
     j["Dependent_name"] = Dependent_name;
     j["Sex"] = string(1, Sex);
     j["Bdate"] = Bdate;
-    j["Realationship"] = Relationship;
+    j["Relationship"] = Relationship;
     return j;
 }
 
 void Dependent::IncreaseId(){
     Id = ++ IdNew;
+}
+
+string Dependent::GetRelationship() {
+    return Relationship;
+}
+
+int Dependent::GetEssn() {
+    return Essn;
 }
 
 int Dependent::IdNew = 0;

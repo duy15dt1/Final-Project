@@ -27,7 +27,7 @@ void DependentData::Read(string filename){
             j["Dependent_name"],
             sex[0],
             j["Bdate"],
-            j["Realationship"]
+            j["Relationship"]
         );
         d.IncreaseId();
         _dependentArr.push_back(d);
