@@ -17,12 +17,7 @@ private:
     DependentData dependentdata;
     ProjectData projectdata;
 public:
-    void Display(EmployeeData& );
-    void Display(Dept_locationsData& );
-    void Display(DepartmentData& );
-    void Display(Work_onData& );
-    void Display(DependentData& );
-    void Display(ProjectData& );
+    void Display(DataBusinessObject* );
     void Choose_sentence();
     void ChooseTable();
     void ChooseOpt(int n);

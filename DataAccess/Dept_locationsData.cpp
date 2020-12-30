@@ -16,6 +16,10 @@ int Dept_locationsData::GetSize() {
     return _deptlocationArr.size();
 }
 
+BusinessObject* Dept_locationsData::GetPointer(int i) {
+    return &_deptlocationArr[i];
+}
+
 void Dept_locationsData::Read(string filename){
     if (_deptlocationArr.size() != 0) {
         _deptlocationArr.back().GetIdNew() = 0;
@@ -46,11 +50,9 @@ void Dept_locationsData::Delete(int i) {
     _deptlocationArr.back().GetIdNew() = _maxId;
 }
 
-void Dept_locationsData::Add() {
-    Dept_locations dept;
-    cin >> dept;
-    dept.IncreaseId();
-    _deptlocationArr.push_back(dept);
+void Dept_locationsData::Add(Dept_locations& dept_location) {
+    dept_location.IncreaseId();
+    _deptlocationArr.push_back(dept_location);
 }
 
 void Dept_locationsData::Edit(int i) {

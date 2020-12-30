@@ -43,11 +43,9 @@ void ProjectData::Delete(int i) {
     _projectArr.back().GetIdNew() = _maxId;
 }
 
-void ProjectData::Add() {
-    Project p;
-    cin >> p;
-    p.IncreaseId();
-    _projectArr.push_back(p);
+void ProjectData::Add(Project& project) {
+    project.IncreaseId();
+    _projectArr.push_back(project);
 }
 
 void ProjectData::Edit(int i) {
@@ -61,6 +59,10 @@ int ProjectData::GetMaxId(){
 
 Project& ProjectData::Get(int i){
     return _projectArr[i];
+}
+
+BusinessObject* ProjectData::GetPointer(int i) {
+    return &_projectArr[i];
 }
 
 int ProjectData::GetSize() {

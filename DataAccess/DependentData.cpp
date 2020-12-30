@@ -44,6 +44,10 @@ Dependent& DependentData::Get(int i){
     return  _dependentArr[i];
 }
 
+BusinessObject* DependentData::GetPointer(int i) {
+    return &_dependentArr[i];
+}
+
 void DependentData::Delete(int i) {
     _dependentArr.erase(_dependentArr.begin() + i - 1);
     _maxId = _dependentArr.size();
@@ -53,11 +57,9 @@ void DependentData::Delete(int i) {
     _dependentArr.back().GetIdNew() = _maxId;
 }
 
-void DependentData::Add() {
-    Dependent d;
-    cin >> d;
-    d.IncreaseId();
-    _dependentArr.push_back(d);
+void DependentData::Add(Dependent& dependent) {
+    dependent.IncreaseId();
+    _dependentArr.push_back(dependent);
 }
 
 void DependentData::Edit(int i) {

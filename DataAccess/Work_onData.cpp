@@ -40,6 +40,9 @@ int Work_onData:: GetMaxId(){
 Work_on& Work_onData::Get(int i){
     return _workonArr[i];
 }
+BusinessObject* Work_onData::GetPointer(int i) {
+    return &_workonArr[i];
+}
 void Work_onData::Delete(int i){
     _workonArr.erase(_workonArr.begin()+i-1);
     _maxId = _workonArr.size();
@@ -49,11 +52,9 @@ void Work_onData::Delete(int i){
     _workonArr.back().GetIdNew() = _maxId;
 }
 
-void Work_onData::Add(){
-    Work_on depa;
-    cin >> depa;
-    depa.IncreaseId();
-    _workonArr.push_back(depa);
+void Work_onData::Add(Work_on& work_on){
+    work_on.IncreaseId();
+    _workonArr.push_back(work_on);
 }
 void Work_onData::Edit(int i){
     cin >> _workonArr[i];

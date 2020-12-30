@@ -41,12 +41,12 @@ void EmployeeData::Read(string filename){
     inFile.close();
 }
 
-int EmployeeData::GetMaxId(){
-    return _maxId;
-}
-
 Employee& EmployeeData::Get(int i) {
     return _employeeArr[i];
+}
+
+BusinessObject* EmployeeData::GetPointer(int i) {
+    return &_employeeArr[i];
 }
 
 void EmployeeData::Delete(int i) {
@@ -58,9 +58,7 @@ void EmployeeData::Delete(int i) {
     _employeeArr.back().GetIdNew() = _maxId;
 }
 
-void EmployeeData::Add() {
-    Employee e;
-    cin >> e;
+void EmployeeData::Add(Employee& e) {
     e.IncreaseId();
     _employeeArr.push_back(e);
 }

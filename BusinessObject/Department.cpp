@@ -1,17 +1,24 @@
 #include "Department.h"
-//Default constructor
-Department::Department() {
-}
-
-//Contructor with input parameters     
+Department::Department() {}
+   
 Department::Department(string Dname, int Dnumber, int Mgrssn, string Mgrstartdate){
-    this->Dname = Dname;                //    Name of department 
-    this->Dnumber = Dnumber;            //    Number of department 
-    this->Mgrssn = Mgrssn;              //    Social security number of manager 
-    this->Mgrstartdate = Mgrstartdate;  //    Department management start date of manager 
+    this->Dname = Dname;                 
+    this->Dnumber = Dnumber;            
+    this->Mgrssn = Mgrssn;               
+    this->Mgrstartdate = Mgrstartdate; 
 }
 
-//GetId() is a function that get ID value of department 
+string Department::GetDepartmentName() {
+    return Dname;
+}
+
+int Department::GetDepartmentNumber() {
+    return Dnumber;
+}
+int Department::GetMgrssn() {
+    return Mgrssn;
+}
+
 int& Department::GetId(){
     return Id;
 }
@@ -19,17 +26,34 @@ int& Department::GetId(){
 int& Department::GetIdNew(){
     return IdNew;
 }
-//ToString() is a function that convert the informations of department to string type
+
+void Department::IncreaseId(){
+    Id = ++IdNew;
+}
+
+/** Dnumber and Mgrssn are not string so we have to use "to_string"
+ *  in library "string" to convert so that we can display
+ *  DO NOT REMOVE "to_string" or it can get issues
+ *  @return a string
+ *  Example: 
+ *  {Dname: Research, Dnumber: 5, Mgrssn: 333445555, Mgrstartdate: 1988-05-22}
+ */
 string Department::ToString(){
     string s;
-    s += "{ ";
-    s += Dname + ",";
-    s += to_string(Dnumber) + ",";
-    s += to_string(Mgrssn) + ",";
-    s += Mgrstartdate + "}";
+    s += "{Dname: " + Dname + ",";
+    s += "Dnumber:" + to_string(Dnumber) + ",";
+    s += "Mgrssn: " + to_string(Mgrssn) + ",";
+    s += "Mgrstartdate" + Mgrstartdate + "}";
     return s;
 }
-//ToString() is a function that convert the informations of department to json type to save file
+
+/** @brief Function converts this object to json object.
+ *  
+ *  Function converts this object to json object.
+ *  @return a json object;
+ *  Example: 
+ *  {"Dname":"Research","Dnumber":5,"Mgrssn":333445555,"Mgrstartdate":"1988-05-22"}
+ */
 json Department::ToJson(){
     json j;
     j["Dname"] = Dname;
@@ -38,16 +62,6 @@ json Department::ToJson(){
     j["Mgrstartdate"] = Mgrstartdate;
     return j;
 }
-void Department::IncreaseId(){
-    Id = ++IdNew;
-}
-string Department::GetDepartmentName() {
-    return Dname;
-}
-int Department::GetDepartmentNumber() {
-    return Dnumber;
-}
-int Department::GetMgrssn() {
-    return Mgrssn;
-}
-int Department::IdNew = 0;             //     Identification of department for update
+
+//
+int Department::IdNew = 0;             

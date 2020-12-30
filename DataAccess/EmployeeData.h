@@ -10,15 +10,13 @@ private:
     int _maxId;
 public:
     EmployeeData();
-    int GetMaxId();
-    int PushBack(Employee);
     Employee& Get(int );
-    int GetSize();
-    void Add();
+    BusinessObject* GetPointer(int );
+    void Add(Employee&);
     void Edit(int );
     void Delete(int );
     void Read(string );
     int ExportToFile(string );
-    void Cau2(string );
+    int GetSize();
 };
 #endif

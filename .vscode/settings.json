@@ -12,6 +12,7 @@
         "limits": "cpp",
         "memory": "cpp",
         "type_traits": "cpp",
-        "valarray": "cpp"
+        "valarray": "cpp",
+        "deque": "cpp"
     }
 }

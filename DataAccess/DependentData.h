@@ -11,10 +11,10 @@ private:
 public:
     DependentData();
     int GetMaxId();
-    int PushBack(Dependent);
     Dependent& Get(int );
     int GetSize();
-    void Add();
+    BusinessObject* GetPointer(int);
+    void Add(Dependent&);
     void Edit(int );
     void Delete(int );
     void Read(string );

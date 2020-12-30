@@ -14,11 +14,11 @@ public:
     //GetMaxId() is a function that get the maximum ID of Work_on data
     int GetMaxId();
     // PushBack(Work_on) is a function that push one Work_on data in the back of _data vector and return maximun ID of the current _data vector
-    int PushBack(Work_on);
     //Get(int i) is a function that get the Work_on data at i position of _data vector
     Work_on& Get(int );
+    BusinessObject* GetPointer(int);
     int GetSize();
-    void Add();
+    void Add(Work_on&);
     void Edit(int );
     void Delete(int );
     void Read(string );

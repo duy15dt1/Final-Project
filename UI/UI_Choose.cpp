@@ -1,44 +1,11 @@
 #include "UI_Choose.h"
-void UI_Choose::Display(EmployeeData& employeeData) {
-    for (int i = 0; i < employeeData.GetSize(); i++) {
-        Employee e = employeeData.Get(i);
-        cout << e.GetId() << " " << e.ToString() << endl << endl;
+void UI_Choose::Display(DataBusinessObject* databusinessobject) {
+    for (int i = 0; i < databusinessobject->GetSize(); i++) {
+        BusinessObject* businessobject = databusinessobject->GetPointer(i);
+        cout << businessobject->GetId() << " " << businessobject->ToString() << endl << endl;
     }
 }
 
-void UI_Choose::Display(Dept_locationsData& ) {
-    for (int i = 0; i < deptdata.GetSize(); i++) {
-        Dept_locations dept = deptdata.Get(i);
-        cout << dept.GetId() << " " << dept.ToString() << endl << endl;
-    }
-}
-
-void UI_Choose::Display(DepartmentData& departmentdata) {
-    for (int i = 0; i < departmentdata.GetSize(); i++) {
-        Department department = departmentdata.Get(i);
-        cout << department.GetId() << " " << department.ToString() << endl << endl;
-    }
-}
-void UI_Choose::Display(Work_onData& work_ondata) {
-    for (int i = 0; i < work_ondata.GetSize(); i++) {
-        Work_on work = work_ondata.Get(i);
-        cout << work.GetId() << " " << work.ToString() << endl << endl;
-    }
-}
-
-void UI_Choose::Display(DependentData& dependentdata) {
-    for (int i = 0; i < dependentdata.GetSize(); i++) {
-        Dependent d = dependentdata.Get(i);
-        cout << d.GetId() << " " << d.ToString() << endl << endl;
-    }
-}
-
-void UI_Choose::Display(ProjectData& projectdata) {
-    for (int i = 0; i < projectdata.GetSize(); i++) {
-        Project project = projectdata.Get(i);
-        cout << project.GetId() << " " << project.ToString() << endl << endl;
-    }
-}
 
 void UI_Choose::DisplayAllEmpUnderSupvr(string name) {
     int ssn;
@@ -183,17 +150,17 @@ void UI_Choose::Choose_sentence() {
     do {
         cout << "                                      EMPLOYEE MANAGEMENT PROGRAM\n";
         cout << "**********************************************MENU*************************************************************\n";
-        cout << "**  1. Add/Eddit/Delete/Read management infomation.                                                          **\n";
-        cout << "**  2. Displays the names of all employees being monitored.                                                  **\n";
-        cout << "**  3. Show all employee names that dependent is daughter or son.                                            **\n";
-        cout << "**  4. Displays project name, total hours that all employees have to work for that project.                  **\n";
-        cout << "**  5. the names of all employees who are not part of any project.                                           **\n";
-        cout << "**  6. Display the department name and the average salary of the employees working for that department.      **\n";
-        cout << "**  7. Average salary of all employees by sex                                                                **\n";
-        cout << "**  8. last names of all managers of the department but not dependent.                                       **\n";
-        cout << "**  9. Displays the names of all employees in a department and work for a project with the minimum hours.    **\n";
+        cout << "**  1.  Add/Eddit/Delete/Read management infomation.                                                         **\n";
+        cout << "**  2.  Display the names of all employees being monitored.                                                  **\n";
+        cout << "**  3.  Show all employee names that dependent is daughter or son.                                           **\n";
+        cout << "**  4.  Display project name, total hours that all employees have to work for that project.                  **\n";
+        cout << "**  5.  Display the names of all employees who are not part of any project.                                  **\n";
+        cout << "**  6.  Display the department name and the average salary of the employees working for that department.     **\n";
+        cout << "**  7.  Average salary of all employees by sex                                                               **\n";
+        cout << "**  8.  last names of all managers of the department but not dependent.                                      **\n";
+        cout << "**  9.  Displays the names of all employees in a department and work for a project with the minimum hours.   **\n";
         cout << "**  10. Built in features to backup and restore data.                                                        **\n";
-        cout << "**  0. Exit                                                                                                  **\n";
+        cout << "**  0.  Exit                                                                                                 **\n";
         cout << "***************************************************************************************************************\n";
         int k;
         cout << endl << "**  Enter your choose: ";
@@ -346,28 +313,40 @@ void UI_Choose::ChooseOpt(int n)
         switch (x){ 
             case 1:
                 if (n == 1) {
-                    employeedata.Add();
-                    Display(employeedata);  
+                    Employee employee;
+                    cin >> employee;
+                    employeedata.Add(employee);
+                    Display(&employeedata);  
                 }
                 else if (n == 2) {
-                    departmentdata.Add();
-                    Display(departmentdata);
+                    Department department;
+                    cin >> department;
+                    departmentdata.Add(department);
+                    Display(&departmentdata);
                 }
                 else if (n == 3) {
-                    deptdata.Add();
-                    Display(deptdata);
+                    Dept_locations dept_location;
+                    cin >> dept_location;
+                    deptdata.Add(dept_location);
+                    Display(&deptdata);
                 }
                 else if (n == 4) {
-                    projectdata.Add();
-                    Display(projectdata);
+                    Project project;
+                    cin >> project;
+                    projectdata.Add(project);
+                    Display(&projectdata);
                 }
                 else if (n == 5) {
-                    work_ondata.Add();
-                    Display(work_ondata);
+                    Work_on work_on;
+                    cin >> work_on;
+                    work_ondata.Add(work_on);
+                    Display(&work_ondata);
                 }
                 else if (n == 6) {
-                    dependentdata.Add();
-                    Display(dependentdata);
+                    Dependent dependent;
+                    cin >> dependent;
+                    dependentdata.Add(dependent);
+                    Display(&dependentdata);
                 }
                 break;
             case 2:
@@ -376,7 +355,7 @@ void UI_Choose::ChooseOpt(int n)
                     cout << "Enter the person who you want to edit: ";
                     cin >> id;
                     employeedata.Edit(id - 1);    
-                    Display(employeedata);  
+                    Display(&employeedata);  
                 
                 }
                 else if (n == 2) {
@@ -384,35 +363,35 @@ void UI_Choose::ChooseOpt(int n)
                     cout << "Enter the person who you want to edit: ";
                     cin >> id;
                     departmentdata.Edit(id - 1);    
-                    Display(departmentdata);
+                    Display(&departmentdata);
                 }
                 else if (n == 3) {
                     int id;
                     cout << "Enter the person who you want to edit: ";
                     cin >> id;
                     deptdata.Edit(id - 1);    
-                    Display(deptdata);  
+                    Display(&deptdata);  
                 } 
                 else if (n == 4) {
                     int id;
                     cout << "Enter the person who you want to edit: ";
                     cin >> id;
                     projectdata.Edit(id - 1);    
-                    Display(projectdata);  
+                    Display(&projectdata);  
                 }
                 else if (n == 5) {
                     int id;
                     cout << "Enter the person who you want to edit: ";
                     cin >> id;
                     work_ondata.Edit(id - 1);     
-                    Display(work_ondata);
+                    Display(&work_ondata);
                 }
                 else if (n == 6) {
                     int id;
                     cout << "Enter the person who you want to edit: ";
                     cin >> id;
                     dependentdata.Edit(id - 1);     
-                    Display(dependentdata);
+                    Display(&dependentdata);
                 }
                 break;
             case 3:
@@ -421,7 +400,7 @@ void UI_Choose::ChooseOpt(int n)
                     cout << "Enter the person who yoid want to delete: ";
                     cin >> id;
                     employeedata.Delete(id);
-                    Display(employeedata);
+                    Display(&employeedata);
                 
                 }
                 else if (n == 2) {
@@ -429,7 +408,7 @@ void UI_Choose::ChooseOpt(int n)
                     cout << "Enter the person who yoid want to delete: ";
                     cin >> id;
                     departmentdata.Delete(id);
-                    Display(departmentdata);
+                    Display(&departmentdata);
                 
                 }
                 else if (n == 3) {
@@ -437,7 +416,7 @@ void UI_Choose::ChooseOpt(int n)
                     cout << "Enter the person who yoid want to delete: ";
                     cin >> id;
                     deptdata.Delete(id);
-                    Display(deptdata);
+                    Display(&deptdata);
                 
                 }
                 else if (n == 4) {
@@ -445,7 +424,7 @@ void UI_Choose::ChooseOpt(int n)
                     cout << "Enter the person who yoid want to delete: ";
                     cin >> id;
                     projectdata.Delete(id);
-                    Display(projectdata);
+                    Display(&projectdata);
                 
                 }
                 else if (n == 5) {
@@ -453,40 +432,40 @@ void UI_Choose::ChooseOpt(int n)
                     cout << "Enter the person who yoid want to delete: ";
                     cin >> id;
                     work_ondata.Delete(id);
-                    Display(work_ondata);
+                    Display(&work_ondata);
                 }
                 else if (n == 6) {
                     int id;
                     cout << "Enter the person who yoid want to delete: ";
                     cin >> id;
                     dependentdata.Delete(id);
-                    Display(dependentdata);
+                    Display(&dependentdata);
                 }
                 break;
             case 4:
                 if (n == 1) {
-                    employeedata.Read("EmployeeData.data");
-                    Display(employeedata);
+                    employeedata.Read("Data/EmployeeData.data");
+                    Display(&employeedata);
                 }
                 if (n == 2) {
-                    departmentdata.Read("DepartmentData.data");
-                    Display(departmentdata);
+                    departmentdata.Read("Data/DepartmentData.data");
+                    Display(&departmentdata);
                 }
                 else if (n == 3) {
-                    deptdata.Read("Dept_locationsData.data");
-                    Display(deptdata);
+                    deptdata.Read("Data/Dept_locationsData.data");
+                    Display(&deptdata);
                 }
                 else if (n == 4) {
-                    projectdata.Read("ProjectData.data");
-                    Display(projectdata);                
+                    projectdata.Read("Data/ProjectData.data");
+                    Display(&projectdata);                
                 }
                 else if (n == 5) {
-                    work_ondata.Read("Work_onData.data");
-                    Display(work_ondata);
+                    work_ondata.Read("Data/Work_onData.data");
+                    Display(&work_ondata);
                 }
                 else if (n == 6) {
-                    dependentdata.Read("DependentData.data");
-                    Display(dependentdata);
+                    dependentdata.Read("Data/DependentData.data");
+                    Display(&dependentdata);
                 }
                 break;
             case 5:

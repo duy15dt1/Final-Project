@@ -5,10 +5,8 @@
 using namespace std;
 class DataBusinessObject {
 public:
-    virtual void Add() = 0;
-    virtual void Edit(int ) = 0;
-    virtual void Delete(int ) = 0;
-    virtual void Read(string ) = 0;
+    virtual int GetSize() = 0;
+    virtual BusinessObject* GetPointer(int ) = 0;
 };
 
 #endif

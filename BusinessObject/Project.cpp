@@ -1,44 +1,11 @@
 #include "Project.h"
-//Default constructor
-Project::Project(){};
+Project::Project(){}
 
-//Constructor with input parameters
 Project::Project(string Pname, int Pnumber, string Plocation, int Dnum){
     this->Pname = Pname;    
     this->Pnumber = Pnumber;    
     this->Plocation = Plocation;  
     this->Dnum = Dnum;       
-};
-
-int& Project::GetId(){
-    return Id;
-}
-
-int& Project::GetIdNew(){
-    return IdNew;
-}
-
-string Project::ToString(){
-    string s;
-    s += "{";
-    s += Pname + ", ";
-    s += to_string(Pnumber) + ", ";
-    s += Plocation + ", ";
-    s += to_string(Dnum) + "}";
-    return s;
-}
-
-json Project::ToJson(){
-    json j;
-    j["Pname"] = Pname;
-    j["Pnumber"] = Pnumber;
-    j["Plocation"] = Plocation;
-    j["Dnum"] = Dnum;
-    return j;
-}
-
-void Project::IncreaseId(){
-    Id = ++ IdNew;
 }
 
 int Project::GetPnumber() {
@@ -49,6 +16,50 @@ string Project::GetPname() {
 }
 int Project::GetDnum() {
     return Dnum;
+}
+
+int& Project::GetId(){
+    return Id;
+}
+
+int& Project::GetIdNew(){
+    return IdNew;
+}
+
+void Project::IncreaseId(){
+    Id = ++ IdNew;
+}
+
+/** Pnumber and Dnum are not string so we have to use "to_string"
+ *  in library "string" to convert so that we can display
+ *  DO NOT REMOVE "to_string" or it can get issues
+ *  @return a string
+ *  Example: 
+ *  {Pname: ProductX, Pnumber: 1, Plocation: Bellaire, Dnum: 5}
+ */
+string Project::ToString(){
+    string s;
+    s += "{Pname: " + Pname + ", ";
+    s += "Pnumber: " + to_string(Pnumber) + ", ";
+    s += "Plocation: " + Plocation + ", ";
+    s += "Dnumber: " + to_string(Dnum) + "}";
+    return s;
+}
+
+/** @brief Function converts this object to json object.
+ *  
+ *  Function converts this object to json object.
+ *  @return a json object;
+ *  Example: 
+ *  {"Pname":"ProductX","Pnumber":1,"Plocation":"Bellaire","Dnum":5}
+ */
+json Project::ToJson(){
+    json j;
+    j["Pname"] = Pname;
+    j["Pnumber"] = Pnumber;
+    j["Plocation"] = Plocation;
+    j["Dnum"] = Dnum;
+    return j;
 }
 
 int Project::IdNew = 0;

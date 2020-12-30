@@ -1,8 +1,0 @@
-{"Address":"73Fondren,Houston,TX","Bdate":"1965-01-09","Dno":5,"Fname":"John","Lname":"Smith","Minit":"B","Salary":30000,"Sex":"M","Ssn":123456789,"Superssn":333445555}
-{"Address":"638Voss,Houston,TX","Bdate":"1955-12-08","Dno":5,"Fname":"Franklin","Lname":"Wong","Minit":"T","Salary":40000,"Sex":"M","Ssn":333445555,"Superssn":888665555}
-{"Address":"3321Castle,String,TX","Bdate":"1968-07-19","Dno":4,"Fname":"Alicia","Lname":"Zelaya","Minit":"J","Salary":25000,"Sex":"F","Ssn":999887777,"Superssn":987654321}
-{"Address":"291Berry,Bellaire,TX","Bdate":"1941-06-20","Dno":4,"Fname":"Jennifer","Lname":"Wallace","Minit":"S","Salary":43000,"Sex":"F","Ssn":987654321,"Superssn":888665555}
-{"Address":"975FireOak,Humble,TX","Bdate":"1962-09-15","Dno":5,"Fname":"Ramesh","Lname":"Narayan","Minit":"K","Salary":38000,"Sex":"M","Ssn":666884444,"Superssn":333445555}
-{"Address":"5631Rice,Houston,TX","Bdate":"1972-07-31","Dno":5,"Fname":"Joyce","Lname":"English","Minit":"A","Salary":25000,"Sex":"F","Ssn":453453453,"Superssn":333445555}
-{"Address":"980Dallas,Houston,TX","Bdate":"1969-03-29","Dno":4,"Fname":"Ahmad","Lname":"Jabbar","Minit":"V","Salary":25000,"Sex":"M","Ssn":987987987,"Superssn":987654321}
-{"Address":"450Stone,Houston,TX","Bdate":"1937-11-10","Dno":1,"Fname":"James","Lname":"Borg","Minit":"E","Salary":55000,"Sex":"M","Ssn":888665555,"Superssn":0}

@@ -11,10 +11,10 @@ private:
 public:
     ProjectData();
     int GetMaxId();
-    int PushBack(Project);
     Project& Get(int );
+    BusinessObject* GetPointer(int);
     int GetSize();
-    void Add();
+    void Add(Project&);
     void Edit(int );
     void Delete(int );
     void Read(string );

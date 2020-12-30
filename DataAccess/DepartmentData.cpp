@@ -3,12 +3,8 @@
 #include "fstream"
 #include "../libs/json.hpp"
 using namespace std;
-
 using json = nlohmann::json;
-    // Department d1("Research",5,333445555,"1988-05-22");
-    // Department d2("Administration",4,987654321,"1995-01-01");
-    // Department d3("Headquaters",1,888665555,"1981-06-19");
-//Contructor function of DepartmentData
+
 DepartmentData::DepartmentData(){
     _maxId = 0;
     _departmentArr.resize(0);
@@ -42,17 +38,16 @@ int DepartmentData::GetMaxId(){
     return _maxId;
 }
 // PushBack(Department) is a function that push one department data in the back of _departmentArr vector and return maximun ID of the current _departmentArr vector
-int DepartmentData::PushBack(Department d){
-    if (_maxId < d.GetId()){
-        _maxId = d.GetId();
-    }
-    _departmentArr.push_back(d);
-    return _maxId;
-}
+
 //Get(int i) is a function that get the department data at i position of _departmentArr vector
 Department& DepartmentData::Get(int i){
     return _departmentArr[i];
 }
+
+BusinessObject* DepartmentData::GetPointer(int i) {
+    return &_departmentArr[i];
+}
+
 void DepartmentData::Delete(int i){
     _departmentArr.erase(_departmentArr.begin()+i-1);
     _maxId = _departmentArr.size();
@@ -62,11 +57,9 @@ void DepartmentData::Delete(int i){
     _departmentArr.back().GetIdNew() = _maxId;
 }
 
-void DepartmentData::Add(){
-    Department depa;
-    cin >> depa;
-    depa.IncreaseId();
-    _departmentArr.push_back(depa);
+void DepartmentData::Add(Department& deparment){
+    deparment.IncreaseId();
+    _departmentArr.push_back(deparment);
 }
 void DepartmentData::Edit(int i){
     cin >> _departmentArr[i];

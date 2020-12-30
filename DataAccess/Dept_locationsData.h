@@ -16,10 +16,10 @@ private:
 public:
     Dept_locationsData();
     int GetMaxId();
-    int PushBack(Dept_locations dept);
     Dept_locations& Get(int i);
+    BusinessObject* GetPointer(int );
     int GetSize();
-    void Add();
+    void Add(Dept_locations&);
     void Edit(int );
     void Delete(int );
     void Read(string );

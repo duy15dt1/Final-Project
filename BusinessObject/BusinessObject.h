@@ -1,3 +1,4 @@
+//
 #ifndef _BusinessObject_BusinessObject_H_
 #define _BusinessObject_BusinessObject_H_
 #include <iostream>

@@ -14,11 +14,11 @@ public:
     //GetMaxId() is a function that get the maximum ID of department data
     int GetMaxId();
     // PushBack(Department) is a function that push one department data in the back of _data vector and return maximun ID of the current _data vector
-    int PushBack(Department);
     //Get(int i) is a function that get the department data at i position of _data vector
     Department& Get(int );
+    BusinessObject* GetPointer(int );
     int GetSize();
-    void Add();
+    void Add(Department&);
     void Edit(int );
     void Delete(int );
     void Read(string );
