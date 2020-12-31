@@ -1,5 +1,4 @@
 #include "UIMenu.h"
-#include <typeinfo>
 void UIMenu::Display(DataBusinessObject* databusinessobject) {
     for (int i = 0; i < databusinessobject->GetSize(); i++) {
         BusinessObject* businessobject = databusinessobject->GetPointer(i);
@@ -190,14 +189,14 @@ void UIMenu::ChooseSentence() {
             case 4:
                 {
                     int pronum;
-                    do {
                         cout << "Enter project number: ";
                         cin >> pronum;
-                        if (cin.fail()) {
-                            cout << "Error! please type again ";
+                        while (cin.fail()){
+                            cin.clear();
+                            cin.ignore();
+                            cout <<"Not a valid number, please type again: ";
+                            cin>>pronum;
                         }
-                    }
-                    while (cin.fail()); 
                     TotalWorkHours(pronum);
                 }
                 break;
