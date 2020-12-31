@@ -13,6 +13,7 @@
         "memory": "cpp",
         "type_traits": "cpp",
         "valarray": "cpp",
-        "deque": "cpp"
+        "deque": "cpp",
+        "typeinfo": "cpp"
     }
 }

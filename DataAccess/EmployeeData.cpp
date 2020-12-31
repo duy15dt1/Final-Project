@@ -7,23 +7,23 @@ using namespace std;
 using json = nlohmann::json;
 
 EmployeeData::EmployeeData(){
-    _maxId = 0;
-    _employeeArr.resize(0);
+    maxID = 0;
+    employeeArr.resize(0);
 }
 
 void EmployeeData::Read(string filename){
-    if (_employeeArr.size() != 0) {
-        _employeeArr.back().GetIdNew() = 0;
+    if (employeeArr.size() != 0) {
+        employeeArr.back().GetIDMax() = 0;
     }
-    _maxId = 0;
-    _employeeArr.resize(0);
+    maxID = 0;
+    employeeArr.resize(0);
     ifstream inFile(filename);
     const int maxSize = 255;
     char buff[maxSize]; 
     while (inFile.getline(buff,maxSize)) {
         json j = json::parse(buff);
         string sex = j["Sex"];
-        Employee e(
+        Employee employee(
             j["Fname"],
             j["Minit"],
             j["Lname"],
@@ -35,48 +35,48 @@ void EmployeeData::Read(string filename){
             j["Superssn"],
             j["Dno"]
         );
-        e.IncreaseId();
-        _employeeArr.push_back(e);
+        employee.IncreaseID();
+        employeeArr.push_back(employee);
     }
     inFile.close();
 }
 
 Employee& EmployeeData::Get(int i) {
-    return _employeeArr[i];
+    return employeeArr[i];
 }
 
 BusinessObject* EmployeeData::GetPointer(int i) {
-    return &_employeeArr[i];
+    return &employeeArr[i];
 }
 
 void EmployeeData::Delete(int i) {
-    _employeeArr.erase(_employeeArr.begin() + i - 1);
-    _maxId = _employeeArr.size();
-    for (int j = i-1; j < _maxId; j++){
-        _employeeArr[j].GetId() = j + 1;
+    employeeArr.erase(employeeArr.begin() + i - 1);
+    maxID = employeeArr.size();
+    for (int j = i-1; j < maxID; j++){
+        employeeArr[j].GetID() = j + 1;
     }
-    _employeeArr.back().GetIdNew() = _maxId;
+    employeeArr.back().GetIDMax() = maxID;
 }
 
 void EmployeeData::Add(Employee& employee) {
-    employee.IncreaseId();
-    _employeeArr.push_back(employee);
+    employee.IncreaseID();
+    employeeArr.push_back(employee);
 }
 
 void EmployeeData::Edit(Employee& employee,int i){
-    employee.GetId() = _employeeArr[i].GetId();
-    _employeeArr[i] = employee;
+    employee.GetID() = employeeArr[i].GetID();
+    employeeArr[i] = employee;
 }
 
 
 int EmployeeData::GetSize() {
-    return _employeeArr.size();
+    return employeeArr.size();
 }
 
 int EmployeeData::ExportToFile(string filename){
     ofstream outFile(filename, ios::out);
     if (!outFile) return 0;
-    for (Employee e :_employeeArr){
+    for (Employee e :employeeArr){
         outFile << e.ToJson() << endl;
     }
     outFile.close();

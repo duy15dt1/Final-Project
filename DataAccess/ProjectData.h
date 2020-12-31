@@ -1,23 +1,30 @@
 #ifndef _DATAACCESS_PROJECT_DATA_H_
 #define _DATAACCESS_PROJECT_DATA_H_
+#include <iostream>
+#include <fstream>
 #include <vector>
+
 #include "../BusinessObject/Project.h"
 #include "DataBusinessObject.h"
+#include "../libs/json.hpp"
 
-class ProjectData : public DataBusinessObject{
+using namespace std;
+using json = nlohmann::json;
+
+class ProjectData : public DataBusinessObject {
 private:
-    vector<Project> _projectArr;
-    int _maxId;
+    vector<Project> projectArr;
+    int maxID;
 public:
     ProjectData();
-    int GetMaxId();
-    Project& Get(int );
+    int GetMaxID();
+    Project& Get(int);
     BusinessObject* GetPointer(int);
     int GetSize();
     void Add(Project&);
-    void Edit(Project&, int );
-    void Delete(int );
-    void Read(string );
-    int ExportToFile(string );
+    void Edit(Project&, int);
+    void Delete(int);
+    void Read(string);
+    int ExportToFile(string);
 };
 #endif

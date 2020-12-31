@@ -1,10 +1,10 @@
-#ifndef _INOUT_H_
-#define _INOUT_H_
+#ifndef _UI_InOut_H_
+#define _UI_InOut_H_
 
 #include "../../BusinessObject/Department.h"
-#include "../../BusinessObject/Dept_locations.h"
+#include "../../BusinessObject/DepartmentLocations.h"
 #include "../../BusinessObject/Employee.h"
-#include "../../BusinessObject/Work_on.h"
+#include "../../BusinessObject/Workson.h"
 #include "../../BusinessObject/Dependent.h"
 #include "../../BusinessObject/Project.h"
 // Reference to classes of Project
@@ -12,9 +12,9 @@
 using namespace std;
 // Overloading extraction operator 
 istream& operator >> (istream& , Employee& );
-istream& operator >> (istream& , Dept_locations& );
+istream& operator >> (istream& , DepartmentLocations& );
 istream& operator >> (istream& is, Department& d);
-istream& operator >> (istream& is, Work_on& d);
+istream& operator >> (istream& is, Workson& d);
 istream& operator >> (istream& is, Dependent& dep);
 istream& operator >> (istream& is, Project& pro);
 // Overloading insertion operator 

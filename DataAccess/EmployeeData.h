@@ -1,22 +1,30 @@
 #ifndef _DATAACCESS_EMPLOYEE_DATA_H_
 #define _DATAACCESS_EMPLOYEE_DATA_H_
+#include <iostream>
+#include <fstream>
 #include <vector>
+
 #include "../BusinessObject/Employee.h"
 #include "DataBusinessObject.h"
-#include <string.h> 
+
+using namespace std;
+using json = nlohmann::json;
+
 class EmployeeData : public DataBusinessObject {
 private:
-    vector<Employee> _employeeArr;
-    int _maxId;
+    vector<Employee> employeeArr;
+    int maxID;
 public:
     EmployeeData();
-    Employee& Get(int );
-    BusinessObject* GetPointer(int );
-    void Add(Employee&);
-    void Edit(Employee&, int );
-    void Delete(int );
-    void Read(string );
-    int ExportToFile(string );
+    int GetMaxID();
+    Employee& Get(int);
+    BusinessObject* GetPointer(int);
     int GetSize();
+    void Add(Employee&);
+    void Edit(Employee&, int);
+    void Delete(int);
+    void Read(string);
+    int ExportToFile(string);
+    
 };
 #endif

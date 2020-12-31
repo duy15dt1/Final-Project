@@ -1,7 +1,7 @@
 #include "Employee.h"
 
-Employee::Employee() {}
-
+Employee::Employee() {
+}
 Employee::Employee(string Fname, string Minit, string Lname, int Ssn, string Bdate, string Address, char Sex, int Salary, int Superssn, int Dno) {
     this->Fname = Fname;
     this->Minit = Minit;
@@ -14,42 +14,45 @@ Employee::Employee(string Fname, string Minit, string Lname, int Ssn, string Bda
     this->Superssn = Superssn;
     this->Dno = Dno;
 }
-
 string Employee::GetName() {
     return Fname + " " + Lname;
 }
-
-int Employee::GetSuperssn() {
-    return Superssn;
+string Employee::GetFname() {
+    return Fname;
 }
-
+string Employee::GetMinit() {
+    return Minit;
+}
+string Employee::GetLname() {
+    return Lname;
+}
 int Employee::GetSsn() {
     return Ssn;
 }
-
-int Employee::GetDno() {
-    return Dno;
+string Employee::GetBdate() {
+    return Bdate;
 }
-
-int Employee::GetSalary() {
-    return Salary;
+string Employee::GetAddress() {
+    return Address;
 }
-
 char Employee::GetSex() {
     return Sex;
 }
-
-
-int& Employee::GetId() {
-    return Id;
+int Employee::GetSalary() {
+    return Salary;
+}
+int Employee::GetSuperssn() {
+    return Superssn;
+}
+int Employee::GetDno() {
+    return Dno;
+}
+int& Employee::GetIDMax() {
+    return sIDMax;
 }
 
-int& Employee::GetIdNew() {
-    return Idnew;
-}
-
-void Employee::IncreaseId() {
-    Id = ++Idnew;
+void Employee::IncreaseID() {
+    ID = ++sIDMax;
 }
 
 /** Sex is char so we have to use "to_string"
@@ -82,7 +85,7 @@ string Employee::ToString() {
  *  Example: 
  *  {"Fname":"John","Minit":"B","Lname":"Smith","Ssn":123456789,"Bdate":"1965-01-09","Address":"731Fondren, Houston, TX","Sex":"M","Salary":30000,"Superssn":333445555,"Dno":5}
  */
-json Employee::ToJson(){
+json Employee::ToJson() {
     json j;
     j["Minit"] = Minit;
     j["Lname"] = Lname;
@@ -97,4 +100,4 @@ json Employee::ToJson(){
     return j;
 }
 
-int Employee::Idnew = 0;
+int Employee::sIDMax = 0;

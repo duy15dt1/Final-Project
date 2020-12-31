@@ -1,34 +1,30 @@
 #include "Department.h"
-Department::Department() {}
-   
-Department::Department(string Dname, int Dnumber, int Mgrssn, string Mgrstartdate){
+
+Department::Department() {
+}   
+Department::Department(string Dname, int Dnumber, int Mgrssn, string Mgrstartdate) {
     this->Dname = Dname;                 
     this->Dnumber = Dnumber;            
     this->Mgrssn = Mgrssn;               
     this->Mgrstartdate = Mgrstartdate; 
 }
-
-string Department::GetDepartmentName() {
+string Department::GetDName() {
     return Dname;
 }
-
-int Department::GetDepartmentNumber() {
+int Department::GetDNumber() {
     return Dnumber;
 }
 int Department::GetMgrssn() {
     return Mgrssn;
 }
-
-int& Department::GetId(){
-    return Id;
+string Department::GetMgrstartdate() {
+    return Mgrstartdate;
 }
-
-int& Department::GetIdNew(){
-    return IdNew;
+int& Department::GetIDMax() {
+    return sIDMax;
 }
-
-void Department::IncreaseId(){
-    Id = ++IdNew;
+void Department::IncreaseID() {
+    ID = ++sIDMax;
 }
 
 /** Dnumber and Mgrssn are not string so we have to use "to_string"
@@ -38,7 +34,7 @@ void Department::IncreaseId(){
  *  Example: 
  *  {Dname: Research, Dnumber: 5, Mgrssn: 333445555, Mgrstartdate: 1988-05-22}
  */
-string Department::ToString(){
+string Department::ToString() {
     string s;
     s += "{Dname: " + Dname + ",";
     s += "Dnumber:" + to_string(Dnumber) + ",";
@@ -54,7 +50,7 @@ string Department::ToString(){
  *  Example: 
  *  {"Dname":"Research","Dnumber":5,"Mgrssn":333445555,"Mgrstartdate":"1988-05-22"}
  */
-json Department::ToJson(){
+json Department::ToJson() {
     json j;
     j["Dname"] = Dname;
     j["Dnumber"] = Dnumber;
@@ -63,5 +59,4 @@ json Department::ToJson(){
     return j;
 }
 
-//
-int Department::IdNew = 0;             
+int Department::sIDMax = 0;             

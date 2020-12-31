@@ -5,18 +5,16 @@
 using namespace std;
 using json = nlohmann::json;
 
-ProjectData::ProjectData(){
-    _maxId = 0;
-    _projectArr.resize(0);
+ProjectData::ProjectData() {
+    maxID = 0;
+    projectArr.resize(0);
 }
-
-
-void ProjectData::Read(string filename){
-    if (_projectArr.size() != 0) {
-        _projectArr.back().GetIdNew() = 0;
+void ProjectData::Read(string filename) {
+    if (projectArr.size() != 0) {
+        projectArr.back().GetIDMax() = 0;
     }
-    _maxId = 0;
-    _projectArr.resize(0);
+    maxID = 0;
+    projectArr.resize(0);
     ifstream inFile(filename);
     const int maxSize = 255;
     char buff[maxSize]; 
@@ -28,52 +26,52 @@ void ProjectData::Read(string filename){
             j["Plocation"],
             j["Dnum"]
         );
-        p.IncreaseId();
-        _projectArr.push_back(p);
+        p.IncreaseID();
+        projectArr.push_back(p);
     }
     inFile.close();
 }
 
 void ProjectData::Delete(int i) {
-    _projectArr.erase(_projectArr.begin() + i - 1);
-    _maxId = _projectArr.size();
-    for (int j = i-1; j < _maxId; j++){
-        _projectArr[j].GetId() = j + 1;
+    projectArr.erase(projectArr.begin() + i - 1);
+    maxID = projectArr.size();
+    for (int j = i-1; j < maxID; j++){
+        projectArr[j].GetID() = j + 1;
     }
-    _projectArr.back().GetIdNew() = _maxId;
+    projectArr.back().GetIDMax() = maxID;
 }
 
 void ProjectData::Add(Project& project) {
-    project.IncreaseId();
-    _projectArr.push_back(project);
+    project.IncreaseID();
+    projectArr.push_back(project);
 }
 
-void ProjectData::Edit(Project& project,int i){
-    project.GetId() = _projectArr[i].GetId();
-    _projectArr[i] = project;
+void ProjectData::Edit(Project& project,int i) {
+    project.GetID() = projectArr[i].GetID();
+    projectArr[i] = project;
 }
 
-int ProjectData::GetMaxId(){
-    return _maxId;
+int ProjectData::GetMaxID(){
+    return maxID;
 }
 
 
 Project& ProjectData::Get(int i){
-    return _projectArr[i];
+    return projectArr[i];
 }
 
 BusinessObject* ProjectData::GetPointer(int i) {
-    return &_projectArr[i];
+    return &projectArr[i];
 }
 
 int ProjectData::GetSize() {
-    return _projectArr.size();
+    return projectArr.size();
 }
 
-int ProjectData::ExportToFile(string filename){
+int ProjectData::ExportToFile(string filename) {
     ofstream outFile(filename, ios::out);
     if (!outFile) return 0;
-    for (Project p :_projectArr){
+    for (Project p :projectArr) {
         outFile << p.ToJson() << endl;
     }
     outFile.close();

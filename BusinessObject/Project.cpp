@@ -1,5 +1,6 @@
 #include "Project.h"
-Project::Project(){}
+Project::Project(){
+}
 
 Project::Project(string Pname, int Pnumber, string Plocation, int Dnum){
     this->Pname = Pname;    
@@ -17,17 +18,12 @@ string Project::GetPname() {
 int Project::GetDnum() {
     return Dnum;
 }
-
-int& Project::GetId(){
-    return Id;
+int& Project::GetIDMax(){
+    return sIDMax;
 }
 
-int& Project::GetIdNew(){
-    return IdNew;
-}
-
-void Project::IncreaseId(){
-    Id = ++ IdNew;
+void Project::IncreaseID(){
+    ID = ++sIDMax;
 }
 
 /** Pnumber and Dnum are not string so we have to use "to_string"
@@ -62,4 +58,4 @@ json Project::ToJson(){
     return j;
 }
 
-int Project::IdNew = 0;
+int Project::sIDMax = 0;

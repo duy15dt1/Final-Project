@@ -1,32 +1,31 @@
 #include "Dependent.h"
-Dependent::Dependent(){};
-
-Dependent::Dependent(int Essn, string Dependent_name, char Sex, string Bdate, string Relationship){
+Dependent::Dependent() {
+}
+Dependent::Dependent(int Essn, string DependentName, char Sex, string Bdate, string Relationship) {
     this->Essn = Essn;                    
-    this->Dependent_name = Dependent_name;          
+    this->DependentName = DependentName;          
     this->Sex = Sex;                       
     this->Bdate = Bdate;                  
     this->Relationship = Relationship;          
 }
-
-string Dependent::GetRelationship() {
-    return Relationship;
-}
-
 int Dependent::GetEssn() {
     return Essn;
 }
-
-int& Dependent::GetId(){
-    return Id;
+char Dependent::GetSex() {
+    return Sex;
+}
+string Dependent::GetBdate() {
+    return Bdate;
+}
+string Dependent::GetRelationship() {
+    return Relationship;
+}
+int& Dependent::GetIDMax() {
+    return sIDMax;
 }
 
-int& Dependent::GetIdNew(){
-    return IdNew;
-}
-
-void Dependent::IncreaseId(){
-    Id = ++ IdNew;
+void Dependent::IncreaseID() {
+    ID = ++sIDMax;
 }
 
 /** Essn is not string so we have to use "to_string"
@@ -36,10 +35,10 @@ void Dependent::IncreaseId(){
  *  Example: 
  *  {Essn: 333445555, Dependent_name: Alice, Sex: F, Bdate: 1986-04-05, Relationship: DAUGHTER}
  */
-string Dependent::ToString(){
+string Dependent::ToString() {
     string s;
     s += "{Essn: " + to_string(Essn) + ", ";
-    s += "Dependent name: " + Dependent_name + ", ";
+    s += "Dependent name: " + DependentName + ", ";
     //Sex is type char so we convert to string then get the first character
     string str = string(1,Sex); 
     s += "Sex: " + str + ", ";
@@ -55,10 +54,10 @@ string Dependent::ToString(){
  *  Example: 
  *  {"Essn":333445555,"Dependent_name":"Alice","Sex":"F","Bdate":"1986-04-05","Relationship":"DAUGHTER"}
  */
-json Dependent::ToJson(){
+json Dependent::ToJson() {
     json j;
     j["Essn"] = Essn;
-    j["Dependent_name"] = Dependent_name;
+    j["Dependent_name"] = DependentName;
     j["Sex"] = string(1, Sex);
     j["Bdate"] = Bdate;
     j["Relationship"] = Relationship;
@@ -66,4 +65,4 @@ json Dependent::ToJson(){
 }
 
 //
-int Dependent::IdNew = 0;
+int Dependent::sIDMax = 0;

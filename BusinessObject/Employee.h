@@ -1,11 +1,14 @@
 //Class contains all information of object Employee
-#ifndef _EMPLOYEE_H_
-#define _EMPLOYEE_H_
+#ifndef _BusinessObject_Employee_H_
+#define _BusinessObject_Employee_H_
 #include <string>
+
 #include "BusinessObject.h"
 #include "../libs/json.hpp"
+
 using namespace std;
 using json = nlohmann::json;
+
 class Employee : public BusinessObject {
 private:
     //Original member of the class
@@ -24,25 +27,27 @@ private:
     //to access the object whenever we want.
     //The IdNew exists because when we add or delete an object in the class
     //we will use this variable to identify the new serial number of the object
-    int Id;             // The current identification of Employee sheet 
-    static int Idnew;   // Identification of Employee sheet for update
+    static int sIDMax;   // Identification of Employee sheet for update
 public:    
     Employee(); 
-    Employee(string Fname, string Minit, string Lname, int Ssn, string Bdate, string Address, char Sex, int Salary, int Superssn, int Dno);   
+    Employee(string , string, string, int, string, string, char, int, int, int);   
     
     //All 6 methods below are private so we declare these functions 
     //to return the value of Name, Superssn, Dno, Salary, Sex to use in another method
     string GetName();
-    int GetSuperssn();
+    string GetFname();
+    string GetMinit();
+    string GetLname();
     int GetSsn();
-    int GetDno();
+    string GetBdate();
+    string GetAddress();
+    char GetSex(); 
     int GetSalary();
-    char GetSex();    
+    int GetSuperssn();
+    int GetDno();
 
-    //
-    int& GetId();
-    int& GetIdNew();
-    void IncreaseId();
+    int& GetIDMax();
+    void IncreaseID();
     
     //Convert the informations of Employee to string type to display to screen
     string ToString();
@@ -50,7 +55,7 @@ public:
     //Convert the informations of Employee to json type to save file
     json ToJson();
 
-    friend istream& operator >> (istream& is, Employee& emp);
+    friend istream& operator >> (istream&, Employee&);
 };
 
 #endif

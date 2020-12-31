@@ -1,11 +1,9 @@
 #include <iostream>
-#include "BusinessObject/Employee.h"
-#include "DataAccess/EmployeeData.h"
-#include "UI/UI_Choose.h"
+#include "UI/UIMenu.h"
 using namespace std;
 
 int main() {
-    UI_Choose ui;
-    ui.Choose_sentence();
+    UIMenu ui;
+    ui.ChooseSentence();
     return 0;
 }

@@ -1,21 +1,16 @@
 #include "DependentData.h"
-#include <iostream>
-#include <fstream>
-#include "../libs/json.hpp"
-using namespace std;
-using json = nlohmann::json;
 
-DependentData::DependentData(){
-    _maxId = 0;
-    _dependentArr.resize(0);
+DependentData::DependentData() {
+    maxId = 0;
+    dependentArr.resize(0);
 }
 
-void DependentData::Read(string filename){
-    if (_dependentArr.size() != 0) {
-        _dependentArr.back().GetIdNew() = 0;
+void DependentData::Read(string filename) {
+    if (dependentArr.size() != 0) {
+        dependentArr.back().GetIDMax() = 0;
     }
-    _maxId = 0;
-    _dependentArr.resize(0);
+    maxId = 0;
+    dependentArr.resize(0);
     ifstream inFile(filename);
     const int maxSize = 255;
     char buff[maxSize];
@@ -29,51 +24,51 @@ void DependentData::Read(string filename){
             j["Bdate"],
             j["Relationship"]
         );
-        d.IncreaseId();
-        _dependentArr.push_back(d);
+        d.IncreaseID();
+        dependentArr.push_back(d);
     }
     inFile.close();
 }
 
-int DependentData::GetMaxId(){
-    return _maxId;
+int DependentData::GetMaxId() {
+    return maxId;
 }
 
 
 Dependent& DependentData::Get(int i){
-    return  _dependentArr[i];
+    return  dependentArr[i];
 }
 
 BusinessObject* DependentData::GetPointer(int i) {
-    return &_dependentArr[i];
+    return &dependentArr[i];
 }
 
 void DependentData::Delete(int i) {
-    _dependentArr.erase(_dependentArr.begin() + i - 1);
-    _maxId = _dependentArr.size();
-    for (int j = i-1; j < _maxId; j++){
-        _dependentArr[j].GetId() = j + 1;
+    dependentArr.erase(dependentArr.begin() + i - 1);
+    maxId = dependentArr.size();
+    for (int j = i-1; j < maxId; j++){
+        dependentArr[j].GetID() = j + 1;
     }
-    _dependentArr.back().GetIdNew() = _maxId;
+    dependentArr.back().GetIDMax() = maxId;
 }
 
 void DependentData::Add(Dependent& dependent) {
-    dependent.IncreaseId();
-    _dependentArr.push_back(dependent);
+    dependent.IncreaseID();
+    dependentArr.push_back(dependent);
 }
 
-void DependentData::Edit(Dependent& dependent,int i){
-    _dependentArr[i] = dependent;
+void DependentData::Edit(Dependent& dependent,int i) {
+    dependentArr[i] = dependent;
 }
 
 int DependentData::GetSize(){
-    return _dependentArr.size();
+    return dependentArr.size();
 }
 
-int DependentData::ExportToFile(string filename){
+int DependentData::ExportToFile(string filename) {
     ofstream outFile(filename, ios::out);
     if (!outFile) return 0;
-    for (Dependent d :_dependentArr){
+    for (Dependent d :dependentArr){
         outFile << d.ToJson() <<endl;
     }
     outFile.close();

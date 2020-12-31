@@ -1,68 +1,68 @@
 #include "InOut.h"
 // Overloading extraction operator 
 
-istream& operator >> (istream& is, Employee& emp) {   
+istream& operator >> (istream& is, Employee& employee) {   
     is.ignore();       
-    cout << "First name of employee "; getline(is, emp.Fname);
-    cout << "Middle nane of employee "; is >> emp.Minit; is.ignore();
-    cout << "Last name of employee "; getline(is, emp.Fname);
-    cout << "Social security number of employee "; is >> emp.Ssn;
-    cout << "Birthday of employee "; getline(is, emp.Bdate);
-    cout << "Address of employee "; getline(is, emp.Address);
-    cout << "Sex of employee "; is >> emp.Sex;
-    cout << "Salary of employee "; is >> emp.Salary;
-    cout << "SuperSSN of employee "; is >> emp.Superssn;
-    cout << "Department Number of employee "; is >> emp.Dno;
+    cout << "First name of employee "; getline(is, employee.Fname);
+    cout << "Middle nane of employee "; is >> employee.Minit; is.ignore();
+    cout << "Last name of employee "; getline(is, employee.Fname);
+    cout << "Social security number of employee "; is >> employee.Ssn;
+    cout << "Birthday of employee "; getline(is, employee.Bdate);
+    cout << "Address of employee "; getline(is, employee.Address);
+    cout << "Sex of employee "; is >> employee.Sex;
+    cout << "Salary of employee "; is >> employee.Salary;
+    cout << "SuperSSN of employee "; is >> employee.Superssn;
+    cout << "Department Number of employee "; is >> employee.Dno;
     return is;
 }
 
-istream& operator >> (istream& is, Dept_locations& dept) {
-    cout << "Number of Department: "; is >> dept.Dnumber; is.ignore();
-    cout << "Location of Department: "; getline(is, dept.Dlocation);
+istream& operator >> (istream& is, DepartmentLocations& departmentLocations) {
+    cout << "Number of Department: "; is >> departmentLocations.Dnumber; is.ignore();
+    cout << "Location of Department: "; getline(is, departmentLocations.Dlocation);
     return is;
 }
 
-istream& operator >> (istream& is, Department& depa){
+istream& operator >> (istream& is, Department& department){
     is.ignore();
     //    Name of department
-    cout << "Name of department "; getline(is, depa.Dname); 
+    cout << "Name of department "; getline(is, department.Dname); 
     //    Number of department 
-    cout << "Number of department "; is >> depa.Dnumber;
+    cout << "Number of department "; is >> department.Dnumber;
     //    Social security number of manager 
-    cout << "Social security number of manager "; is >> depa.Mgrssn;
+    cout << "Social security number of manager "; is >> department.Mgrssn;
     //    Department management start date of manager
     is.ignore();
-    cout << "Department management start date of manager "; getline(is, depa.Mgrstartdate);
+    cout << "Department management start date of manager "; getline(is, department.Mgrstartdate);
     return is;
 }
-istream& operator >> (istream& is, Work_on& workon){
+istream& operator >> (istream& is, Workson& worskon){
     //    Social security number of employee
-    cout << "Social security number of employee "; is >> workon.Essn;
+    cout << "Social security number of employee "; is >> worskon.Essn;
     //    Number of project 
-    cout << "Number of project "; is >> workon.Pno;
+    cout << "Number of project "; is >> worskon.Pno;
     //    Overtime hours
-    cout << "Overtime hours of employee ";is >> workon.Hours;
+    cout << "Overtime hours of employee ";is >> worskon.Hours;
     //    Overtime hours
     return is;
 }
 
-istream& operator >> (istream& is, Dependent& dep) {         
-    cout << "Social security number of employee "; is >> dep.Essn;
+istream& operator >> (istream& is, Dependent& dependent) {         
+    cout << "Social security number of employee "; is >> dependent.Essn;
     is.ignore(); 
-    cout << "Name of dependent "; getline(is, dep.Dependent_name);
+    cout << "Name of dependent "; getline(is, dependent.DependentName);
     is.ignore();  
-    cout << "Birthday of employee "; getline(is, dep.Bdate);
-    cout << "Sex of employee "; is >> dep.Sex;
+    cout << "Birthday of employee "; getline(is, dependent.Bdate);
+    cout << "Sex of employee "; is >> dependent.Sex;
     is.ignore();  
-    cout << "Realationship of dependent "; getline(is, dep.Relationship);
+    cout << "Realationship of dependent "; getline(is, dependent.Relationship);
     return is;
 }
 
-istream& operator >> (istream& is, Project& pro) {   
+istream& operator >> (istream& is, Project& project) {   
     is.ignore();       
-    cout << "Name of project "; getline(is, pro.Pname);
-    cout << "Serial number of project"; is >> pro.Dnum;
-    cout << "Location of project "; getline(is, pro.Plocation);
-    cout << "Number of department doing project "; is >> pro.Pnumber;
+    cout << "Name of project "; getline(is, project.Pname);
+    cout << "Serial number of project"; is >> project.Dnum;
+    cout << "Location of project "; getline(is, project.Plocation);
+    cout << "Number of department doing project "; is >> project.Pnumber;
     return is;
 }
