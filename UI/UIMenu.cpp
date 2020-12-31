@@ -1,5 +1,4 @@
 #include "UIMenu.h"
-#include <typeinfo>
 void UIMenu::Display(DataBusinessObject* databusinessobject) {
     for (int i = 0; i < databusinessobject->GetSize(); i++) {
         BusinessObject* businessobject = databusinessobject->GetPointer(i);
@@ -8,23 +7,32 @@ void UIMenu::Display(DataBusinessObject* databusinessobject) {
 }
 
 void UIMenu::DisplayAllEmpUnderSupvr(string name) {
-    int ssn;
+    int ssn = 0;
     for (int i = 0; i < employeedata.GetSize(); i++) {
         if (name == employeedata.Get(i).GetName()) {
-            ssn =  employeedata.Get(i).GetSsn();
+            ssn = employeedata.Get(i).GetSsn();
+            int temp = 0;
             for (int j = 0; j < employeedata.GetSize(); j++) {
                 if ( employeedata.Get(j).GetSuperssn() == ssn) {
                     cout << employeedata.Get(j).GetName() << endl;
+                    temp = 1;
                 }
             }
+            if (temp == 0) {
+                cout << "The employee you enter does not supervise anyone";
+            }
         }
+    }
+    if (ssn == 0) {
+        cout << "There is no name you typed, please type again";
     }
 }
 
 void UIMenu::DisplayAllEmpHasChild() {
+    int ssn = 0;
     for (int i = 0; i < dependentdata.GetSize(); i++) {
         if (dependentdata.Get(i).GetRelationship() == "DAUGHTER" || dependentdata.Get(i).GetRelationship() == "SON") {
-            int ssn = dependentdata.Get(i).GetEssn();
+            ssn = dependentdata.Get(i).GetEssn();
             for (int j = 0; j < employeedata.GetSize(); j++) {
                 if (employeedata.Get(j).GetSsn() == ssn) {
                     cout << employeedata.Get(j).GetName() << " have a " << dependentdata.Get(i).GetRelationship() << endl;
@@ -32,16 +40,22 @@ void UIMenu::DisplayAllEmpHasChild() {
             }
         }
     }
+    if (ssn == 0) {
+        cout << "No employee that dependent is daughter or son";
+    }
 }
 
 void UIMenu::DisplayAverageSalaryEmpInDepartment(string& departmentname) {
-    int pnumber;
+    int pnumber = 0;
     for (int i = 0; i < departmentdata.GetSize(); i++) {
         if (departmentdata.Get(i).GetDName() == departmentname) {
             cout << "Average salary of employee in " << departmentname << ": ";
             pnumber = departmentdata.Get(i).GetDNumber();
             break;
         }
+    }
+    if (pnumber == 0) {
+        cout << "There is no department you typed, please type again.";
     }       
     double average = 0;
     int count = 0;
@@ -56,24 +70,29 @@ void UIMenu::DisplayAverageSalaryEmpInDepartment(string& departmentname) {
 }
 
 void UIMenu::DisplayAllEmpInDepartment(int& departmentnumber, string& projectname, int& minhours) {
-    int pnumber, essn;
-    cout << "All Employee in department: " << departmentnumber << ", work at: " << projectname << ", min hours: " << minhours <<endl;
+    int pnumber = 0, essn = 0;
     for (int i = 0; i < projectdata.GetSize(); i++) {
         if (projectdata.Get(i).GetDnum() == departmentnumber && projectdata.Get(i).GetPname() == projectname) {
             pnumber = projectdata.Get(i).GetPnumber();
             break;
         }
     }
-    cout << pnumber << endl;
+    if (pnumber == 0) {
+        cout << "No project you typed, please type again";
+    }
+    cout << "All Employee in department: " << departmentnumber << ", work at: " << projectname << ", min hours: " << minhours <<endl;
     for (int j = 0; j < worksondata.GetSize(); j++) {
         if (worksondata.Get(j).GetPno() == pnumber && worksondata.Get(j).GetHours() > minhours) {
             essn = worksondata.Get(j).GetEssn();
             for (int k = 0; k < employeedata.GetSize(); k++) {
                 if (employeedata.Get(k).GetSsn() == essn && employeedata.Get(k).GetDno() == departmentnumber) {
-                    cout << employeedata.Get(k).GetName() << " ";
+                    cout << employeedata.Get(k).GetName() << endl;
                 }
             }
         }
+    }
+    if (essn == 0) {
+        cout << "No one in department:" << departmentnumber << ", work at: " << projectname << ", min hours: " << minhours <<endl;
     }
 }
 
@@ -180,7 +199,8 @@ void UIMenu::ChooseSentence() {
                 {
                     string name;
                     cout << "Enter name of supervisor: ";
-                    cin >> name;
+                    cin.ignore();
+                    getline(cin,name);
                     DisplayAllEmpUnderSupvr(name);
                 }
                 break;
@@ -238,12 +258,18 @@ void UIMenu::ChooseSentence() {
                 break;
             case 10:
                 {
-                    employeedata.ExportToFile("EmployeeData.data");
-                    departmentdata.ExportToFile("DepartmentData.Data");
-                    dependentdata.ExportToFile("DependentData.data");
-                    worksondata.ExportToFile("WorksonData.data");
-                    projectdata.ExportToFile("ProjectData.data");
-                    departmentlocationsdata.ExportToFile("DepartmentLocationsData.data");
+                    string name;
+                    cout << "Enter name of folder you want to save: ";
+                    cin >> name;
+                    name = "BackUpData/" + name;
+                    const char* nameoffolder = name.c_str();
+                    mkdir(nameoffolder);
+                    employeedata.ExportToFile(name + "/EmployeeData.data");
+                    departmentdata.ExportToFile(name + "/DepartmentData.Data");
+                    dependentdata.ExportToFile(name + "/DependentData.data");
+                    worksondata.ExportToFile(name + "/WorksonData.data");
+                    projectdata.ExportToFile(name + "/ProjectData.data");
+                    departmentlocationsdata.ExportToFile(name + "/DepartmentLocationsData.data");
                 }
                 break;
             case 0:
