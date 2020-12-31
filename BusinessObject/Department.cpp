@@ -43,7 +43,7 @@ string Department::ToString(){
     s += "{Dname: " + Dname + ",";
     s += "Dnumber:" + to_string(Dnumber) + ",";
     s += "Mgrssn: " + to_string(Mgrssn) + ",";
-    s += "Mgrstartdate" + Mgrstartdate + "}";
+    s += "Mgrstartdate: " + Mgrstartdate + "}";
     return s;
 }
 

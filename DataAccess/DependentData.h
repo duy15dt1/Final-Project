@@ -15,7 +15,7 @@ public:
     int GetSize();
     BusinessObject* GetPointer(int);
     void Add(Dependent&);
-    void Edit(int );
+    void Edit(Dependent&, int );
     void Delete(int );
     void Read(string );
     int ExportToFile(string );

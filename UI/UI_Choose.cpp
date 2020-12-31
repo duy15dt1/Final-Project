@@ -354,7 +354,10 @@ void UI_Choose::ChooseOpt(int n)
                     int id;
                     cout << "Enter the person who you want to edit: ";
                     cin >> id;
-                    employeedata.Edit(id - 1);    
+                    cout << "Edit the person who you want to edit: "<<endl;
+                    Employee employee;
+                    cin >> employee;
+                    employeedata.Edit(employee,id - 1);    
                     Display(&employeedata);  
                 
                 }
@@ -362,42 +365,57 @@ void UI_Choose::ChooseOpt(int n)
                     int id;
                     cout << "Enter the person who you want to edit: ";
                     cin >> id;
-                    departmentdata.Edit(id - 1);    
+                    cout << "Edit the person who you want to edit: "<<endl;
+                    Department department;
+                    cin >> department;                    
+                    departmentdata.Edit(department,id - 1);    
                     Display(&departmentdata);
                 }
                 else if (n == 3) {
                     int id;
                     cout << "Enter the person who you want to edit: ";
                     cin >> id;
-                    deptdata.Edit(id - 1);    
+                    cout << "Edit the person who you want to edit: "<<endl;
+                    Dept_locations dept_location;
+                    cin >> dept_location;
+                    deptdata.Edit(dept_location,id - 1);    
                     Display(&deptdata);  
                 } 
                 else if (n == 4) {
                     int id;
                     cout << "Enter the person who you want to edit: ";
                     cin >> id;
-                    projectdata.Edit(id - 1);    
+                    cout << "Edit the person who you want to edit: "<<endl;
+                    Project project;
+                    cin >> project;
+                    projectdata.Edit(project,id - 1);    
                     Display(&projectdata);  
                 }
                 else if (n == 5) {
                     int id;
                     cout << "Enter the person who you want to edit: ";
                     cin >> id;
-                    work_ondata.Edit(id - 1);     
+                    cout << "Edit the person who you want to edit: "<<endl;
+                    Work_on work_on;
+                    cin >> work_on;
+                    work_ondata.Edit(work_on,id - 1);     
                     Display(&work_ondata);
                 }
                 else if (n == 6) {
                     int id;
                     cout << "Enter the person who you want to edit: ";
                     cin >> id;
-                    dependentdata.Edit(id - 1);     
+                    cout << "Edit the person who you want to edit: " <<endl;
+                    Dependent dependent;
+                    cin >> dependent;
+                    dependentdata.Edit(dependent,id - 1);     
                     Display(&dependentdata);
                 }
                 break;
             case 3:
                 if (n == 1) {
                     int id;
-                    cout << "Enter the person who yoid want to delete: ";
+                    cout << "Enter the person who you want to delete: ";
                     cin >> id;
                     employeedata.Delete(id);
                     Display(&employeedata);
@@ -405,7 +423,7 @@ void UI_Choose::ChooseOpt(int n)
                 }
                 else if (n == 2) {
                     int id;
-                    cout << "Enter the person who yoid want to delete: ";
+                    cout << "Enter the person who you want to delete: ";
                     cin >> id;
                     departmentdata.Delete(id);
                     Display(&departmentdata);
@@ -413,7 +431,7 @@ void UI_Choose::ChooseOpt(int n)
                 }
                 else if (n == 3) {
                     int id;
-                    cout << "Enter the person who yoid want to delete: ";
+                    cout << "Enter the person who you want to delete: ";
                     cin >> id;
                     deptdata.Delete(id);
                     Display(&deptdata);
@@ -421,7 +439,7 @@ void UI_Choose::ChooseOpt(int n)
                 }
                 else if (n == 4) {
                     int id;
-                    cout << "Enter the person who yoid want to delete: ";
+                    cout << "Enter the person who you want to delete: ";
                     cin >> id;
                     projectdata.Delete(id);
                     Display(&projectdata);
@@ -429,14 +447,14 @@ void UI_Choose::ChooseOpt(int n)
                 }
                 else if (n == 5) {
                     int id;
-                    cout << "Enter the person who yoid want to delete: ";
+                    cout << "Enter the person who you want to delete: ";
                     cin >> id;
                     work_ondata.Delete(id);
                     Display(&work_ondata);
                 }
                 else if (n == 6) {
                     int id;
-                    cout << "Enter the person who yoid want to delete: ";
+                    cout << "Enter the person who you want to delete: ";
                     cin >> id;
                     dependentdata.Delete(id);
                     Display(&dependentdata);

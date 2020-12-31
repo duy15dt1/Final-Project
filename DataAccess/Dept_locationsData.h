@@ -20,7 +20,7 @@ public:
     BusinessObject* GetPointer(int );
     int GetSize();
     void Add(Dept_locations&);
-    void Edit(int );
+    void Edit(Dept_locations&, int );
     void Delete(int );
     void Read(string );
     int ExportToFile(string );

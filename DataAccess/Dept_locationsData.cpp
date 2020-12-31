@@ -55,8 +55,9 @@ void Dept_locationsData::Add(Dept_locations& dept_location) {
     _deptlocationArr.push_back(dept_location);
 }
 
-void Dept_locationsData::Edit(int i) {
-    cin >> _deptlocationArr[i];
+void Dept_locationsData::Edit(Dept_locations& dept_location,int i){
+    dept_location.GetId() = _deptlocationArr[i].GetId();
+    _deptlocationArr[i] = dept_location;
 }
 
 int Dept_locationsData::ExportToFile(string filename){

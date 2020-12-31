@@ -13,7 +13,7 @@ public:
     Employee& Get(int );
     BusinessObject* GetPointer(int );
     void Add(Employee&);
-    void Edit(int );
+    void Edit(Employee&, int );
     void Delete(int );
     void Read(string );
     int ExportToFile(string );

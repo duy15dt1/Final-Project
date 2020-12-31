@@ -61,8 +61,9 @@ void DepartmentData::Add(Department& deparment){
     deparment.IncreaseId();
     _departmentArr.push_back(deparment);
 }
-void DepartmentData::Edit(int i){
-    cin >> _departmentArr[i];
+void DepartmentData::Edit(Department& deparment,int i){
+    deparment.GetId() = _departmentArr[i].GetId();
+    _departmentArr[i] = deparment;
 }
 int DepartmentData::GetSize() {
     return _departmentArr.size();

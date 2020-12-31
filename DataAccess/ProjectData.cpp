@@ -48,8 +48,9 @@ void ProjectData::Add(Project& project) {
     _projectArr.push_back(project);
 }
 
-void ProjectData::Edit(int i) {
-    cin >> _projectArr[i];
+void ProjectData::Edit(Project& project,int i){
+    project.GetId() = _projectArr[i].GetId();
+    _projectArr[i] = project;
 }
 
 int ProjectData::GetMaxId(){

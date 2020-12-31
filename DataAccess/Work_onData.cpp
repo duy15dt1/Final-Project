@@ -56,8 +56,9 @@ void Work_onData::Add(Work_on& work_on){
     work_on.IncreaseId();
     _workonArr.push_back(work_on);
 }
-void Work_onData::Edit(int i){
-    cin >> _workonArr[i];
+void Work_onData::Edit(Work_on& work_on,int i){
+    work_on.GetId() = _workonArr[i].GetId();
+    _workonArr[i] = work_on;
 }
 int Work_onData::GetSize() {
     return _workonArr.size();

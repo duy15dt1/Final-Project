@@ -62,8 +62,8 @@ void DependentData::Add(Dependent& dependent) {
     _dependentArr.push_back(dependent);
 }
 
-void DependentData::Edit(int i) {
-    cin >> _dependentArr[i];
+void DependentData::Edit(Dependent& dependent,int i){
+    _dependentArr[i] = dependent;
 }
 
 int DependentData::GetSize(){

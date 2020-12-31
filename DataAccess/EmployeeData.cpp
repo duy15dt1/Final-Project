@@ -58,13 +58,14 @@ void EmployeeData::Delete(int i) {
     _employeeArr.back().GetIdNew() = _maxId;
 }
 
-void EmployeeData::Add(Employee& e) {
-    e.IncreaseId();
-    _employeeArr.push_back(e);
+void EmployeeData::Add(Employee& employee) {
+    employee.IncreaseId();
+    _employeeArr.push_back(employee);
 }
 
-void EmployeeData::Edit(int i) {
-    cin >> _employeeArr[i];
+void EmployeeData::Edit(Employee& employee,int i){
+    employee.GetId() = _employeeArr[i].GetId();
+    _employeeArr[i] = employee;
 }
 
 

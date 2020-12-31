@@ -15,7 +15,7 @@ public:
     BusinessObject* GetPointer(int);
     int GetSize();
     void Add(Project&);
-    void Edit(int );
+    void Edit(Project&, int );
     void Delete(int );
     void Read(string );
     int ExportToFile(string );
