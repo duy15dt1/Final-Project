@@ -31,4 +31,7 @@ public:
     void DisplayAllEmpNoProject();
     void TotalWorkHours(int&);
     void AverageIncomeBySex(char&);
+    void SaveFile(string& foldername);
+    vector<string> GetNameBackUpFile();
+    void BackUpFile(string& foldername);
 };

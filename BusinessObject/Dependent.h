@@ -42,7 +42,7 @@ public:
 
     //Convert the informations of Dependent to json type to save file
     json ToJson();
-
+    string PrintElement();
     friend istream& operator >> (istream& is, Dependent& dep);
 };
 #endif

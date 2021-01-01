@@ -35,7 +35,7 @@ public:
     
     //Convert the informations of Work_on to string type to display to screen
     string ToString();
-
+    string PrintElement();
     //Convert the informations of Work_on to json type to save file
     json ToJson();
 

@@ -54,7 +54,7 @@ public:
 
     //Convert the informations of Employee to json type to save file
     json ToJson();
-
+    string PrintElement();
     friend istream& operator >> (istream&, Employee&);
 };
 

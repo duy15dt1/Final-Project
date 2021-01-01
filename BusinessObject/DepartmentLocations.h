@@ -30,7 +30,7 @@ public:
     json ToJson();
     //Convert the informations of Deparment location to json type to save file
     string ToString();
-
+    string PrintElement();
     //
     friend istream& operator >> (istream& , DepartmentLocations&);
 };

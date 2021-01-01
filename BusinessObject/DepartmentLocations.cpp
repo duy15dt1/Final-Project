@@ -27,6 +27,13 @@ string DepartmentLocations::ToString() {
     return s;
 }
 
+string DepartmentLocations::PrintElement() {
+    string s;
+    s += "Dnumber: " + to_string(Dnumber) + ", ";
+    s += "Dlocation: " + Dlocation + ", ";
+    return s;
+}
+
 /** @brief Function converts this object to json object.
  *  
  *  Function converts this object to json object.

@@ -47,6 +47,18 @@ string Dependent::ToString() {
     return s;
 }
 
+string Dependent::PrintElement() {
+    string s;
+    s += "Essn: " + to_string(Essn) + ", ";
+    s += "Dependent name: " + DependentName + ", ";
+    //Sex is type char so we convert to string then get the first character
+    string str = string(1,Sex); 
+    s += "Sex: " + str + ", ";
+    s += "Bdate: " + Bdate + ", ";
+    s += "Relationship: " + Relationship;
+    return s;
+}
+
 /** @brief Function converts this object to json object.
  *  
  *  Function converts this object to json object.

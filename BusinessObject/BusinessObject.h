@@ -14,6 +14,7 @@ public:
     int& GetID();
     virtual string ToString() = 0;
     virtual json ToJson() = 0;
+    virtual string PrintElement() = 0;
 };
 
 #endif //_BusinessObject_BusinessObject_H_

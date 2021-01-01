@@ -1,13 +1,17 @@
 #include "UIMenu.h"
+#include <iomanip>
 void UIMenu::Display(DataBusinessObject* databusinessobject) {
+    cout << endl;
     for (int i = 0; i < databusinessobject->GetSize(); i++) {
         BusinessObject* businessobject = databusinessobject->GetPointer(i);
-        cout << businessobject->GetID() << " " << businessobject->ToString() << endl << endl;
+        cout << "ID: " << businessobject->GetID() << ", " << businessobject->PrintElement() << endl ;
     }
+    cout << endl << endl;
 }
 
 void UIMenu::DisplayAllEmpUnderSupvr(string name) {
     int ssn = 0;
+    cout << "List of employees supervised by " << name << ": " << endl;
     for (int i = 0; i < employeedata.GetSize(); i++) {
         if (name == employeedata.Get(i).GetName()) {
             ssn = employeedata.Get(i).GetSsn();
@@ -26,10 +30,12 @@ void UIMenu::DisplayAllEmpUnderSupvr(string name) {
     if (ssn == 0) {
         cout << "There is no name you typed, please type again";
     }
+    cout << endl << endl;
 }
 
 void UIMenu::DisplayAllEmpHasChild() {
     int ssn = 0;
+    cout << "List of employees that dependent is daughter or son: " << endl;
     for (int i = 0; i < dependentdata.GetSize(); i++) {
         if (dependentdata.Get(i).GetRelationship() == "DAUGHTER" || dependentdata.Get(i).GetRelationship() == "SON") {
             ssn = dependentdata.Get(i).GetEssn();
@@ -43,6 +49,7 @@ void UIMenu::DisplayAllEmpHasChild() {
     if (ssn == 0) {
         cout << "No employee that dependent is daughter or son";
     }
+    cout << endl << endl;
 }
 
 void UIMenu::DisplayAverageSalaryEmpInDepartment(string& departmentname) {
@@ -67,6 +74,7 @@ void UIMenu::DisplayAverageSalaryEmpInDepartment(string& departmentname) {
     }
     average = average / count;
     cout << average;
+    cout << endl << endl;
 }
 
 void UIMenu::DisplayAllEmpInDepartment(int& departmentnumber, string& projectname, int& minhours) {
@@ -94,10 +102,12 @@ void UIMenu::DisplayAllEmpInDepartment(int& departmentnumber, string& projectnam
     if (essn == 0) {
         cout << "No one in department:" << departmentnumber << ", work at: " << projectname << ", min hours: " << minhours <<endl;
     }
+    cout << endl;
 }
 
 void UIMenu::DisplayAllEmpNoProject() {
     bool k = true;
+    cout << "List of employees who are not working on any project :" << endl;
     for (int i = 0; i < employeedata.GetSize(); i++) {
         for(int j = 0; j < worksondata.GetSize(); j++) {
             if (employeedata.Get(i).GetSsn() == worksondata.Get(j).GetEssn()) {
@@ -108,6 +118,7 @@ void UIMenu::DisplayAllEmpNoProject() {
     if(k) cout << employeedata.Get(i).GetID() << " " << employeedata.Get(i).ToString() << endl;
     k = true;
     }
+    cout << endl;
 }
 
 void UIMenu:: DisplayManaNoDependent() {
@@ -120,7 +131,7 @@ void UIMenu:: DisplayManaNoDependent() {
             }
         }
         if(k) {
-            cout << "The last name of managers who haven't dependent people : " << endl;
+            cout << "The last name of managers who haven't dependent people: " << endl;
             for(int l=0; l<employeedata.GetSize(); l++){
                 if(departmentdata.Get(i).GetMgrssn() == employeedata.Get(l).GetSsn()) {
                     cout <<  employeedata.Get(l).GetName()<<endl;
@@ -129,6 +140,7 @@ void UIMenu:: DisplayManaNoDependent() {
         }
         k = true;
     }
+    cout << endl;
 }
 
 void UIMenu::TotalWorkHours(int& n)
@@ -149,15 +161,12 @@ void UIMenu::TotalWorkHours(int& n)
         cout << sum;
     }
     else {
-        cout << "There is no project as you type. Please try again"<<endl;
+        cout << "There is no project as you type. Please try again."<<endl;
     }
+    cout << endl;
 }
 
 void UIMenu::AverageIncomeBySex(char& s){
-    if (s != 'M' && s != 'F'){
-        cout << "Please type again"<<endl;
-    }
-    else{
         int count = 0;
         float TotalIncome = 0;
         for (int i=0; i < employeedata.GetSize(); i++){
@@ -168,11 +177,39 @@ void UIMenu::AverageIncomeBySex(char& s){
         }
         cout << "Average income by "<<s<<" is: "<< TotalIncome/count<<endl;
         cout << endl;
+}
+void UIMenu::SaveFile(string& foldername) {
+    const char* pathname = ("BackUpData/" + foldername).c_str();
+    mkdir(pathname);
+    employeedata.ExportToFile("BackUpData/" + foldername + "/EmployeeData.data");
+    departmentdata.ExportToFile("BackUpData/" + foldername + "/DepartmentData.Data");
+    dependentdata.ExportToFile("BackUpData/" + foldername + "/DependentData.data");
+    worksondata.ExportToFile("BackUpData/" + foldername + "/WorksonData.data");
+    projectdata.ExportToFile("BackUpData/" + foldername + "/ProjectData.data");
+    departmentlocationsdata.ExportToFile("BackUpData/" + foldername + "/DepartmentLocationsData.data");
+}
+vector<string> UIMenu::GetNameBackUpFile() {
+    ifstream backupname("BackUpData/BackUpName.txt");
+    vector<string> backupnamearr;
+    string temp;
+    while(getline(backupname,temp)) {
+        backupnamearr.push_back(temp);
     }
+    backupname.close();
+    return backupnamearr;
+}
+void UIMenu::BackUpFile(string& foldername) {
+    employeedata.Read("BackUpData/" + foldername + "/EmployeeData.data");
+    departmentdata.Read("BackUpData/" + foldername + "/DepartmentData.Data");
+    dependentdata.Read("BackUpData/" + foldername + "/DependentData.data");
+    worksondata.Read("BackUpData/" + foldername + "/WorksonData.data");
+    projectdata.Read("BackUpData/" + foldername + "/ProjectData.data");
+    departmentlocationsdata.Read("BackUpData/" + foldername + "/DepartmentLocationsData.data");
 }
 
 void UIMenu::ChooseSentence() {
-    cout << endl;
+    system("cls");
+    cout << endl << endl << endl;
     do {
         cout << "                                      EMPLOYEE MANAGEMENT PROGRAM\n";
         cout << "**********************************************MENU*************************************************************\n";
@@ -185,12 +222,14 @@ void UIMenu::ChooseSentence() {
         cout << "**  7.  Average salary of all employees by sex                                                               **\n";
         cout << "**  8.  last names of all managers of the department but not dependent.                                      **\n";
         cout << "**  9.  Displays the names of all employees in a department and work for a project with the minimum hours.   **\n";
-        cout << "**  10. Built in features to backup and restore data.                                                        **\n";
+        cout << "**  10. Built in features to store data.                                                                     **\n";
+        cout << "**  11. Built in features to restore data.                                                                   **\n";
         cout << "**  0.  Exit                                                                                                 **\n";
         cout << "***************************************************************************************************************\n";
         int k;
         cout << endl << "**  Enter your choose: ";
         cin >> k;
+        cin.ignore();
         switch(k) {
             case 1:
                 ChooseTable();
@@ -199,7 +238,6 @@ void UIMenu::ChooseSentence() {
                 {
                     string name;
                     cout << "Enter name of supervisor: ";
-                    cin.ignore();
                     getline(cin,name);
                     DisplayAllEmpUnderSupvr(name);
                 }
@@ -210,15 +248,17 @@ void UIMenu::ChooseSentence() {
             case 4:
                 {
                     int pronum;
-                    do {
-                        cout << "Enter project number: ";
-                        cin >> pronum;
-                        if (cin.fail()) {
-                            cout << "Error! please type again ";
+                    do{
+                        if(cin.fail()){
+                            cout <<"Error"<<endl;
+                            cin.clear();
+                            cin.ignore();
                         }
-                    }
-                    while (cin.fail()); 
+                        cout<<"Enter number: ";
+                        cin>>pronum;
+                    } while(cin.fail());
                     TotalWorkHours(pronum);
+                    break; 
                 }
                 break;
             case 5:
@@ -228,15 +268,20 @@ void UIMenu::ChooseSentence() {
                 {
                     string name;
                     cout << "Enter name of department: ";
-                    cin >> name;
+                    getline(cin,name);
                     DisplayAverageSalaryEmpInDepartment(name);   
                 }
                 break;
             case 7:
                 {
                     char s;
-                    cout << "Enter the sex: 'M' or 'F' ";
-                    cin >> s;
+                    do{
+                        if (s != 'M' && s != 'F'){
+                            cout << "Please type again."<<endl;
+                        }
+                        cout << "Enter the sex: 'M' or 'F': ";
+                        cin >> s;
+                    }while(s != 'M' && s != 'F');
                     AverageIncomeBySex(s); 
                 }
                 break;
@@ -249,8 +294,9 @@ void UIMenu::ChooseSentence() {
                     string projectname;
                     cout << "Enter department number: ";
                     cin >> departmentnumber;
+                    cin.ignore();
                     cout << "Enter project name: ";
-                    cin >> projectname;
+                    getline(cin, projectname);
                     cout << "Enter min hours: ";
                     cin >> minhours;
                     DisplayAllEmpInDepartment(departmentnumber, projectname, minhours);
@@ -258,18 +304,35 @@ void UIMenu::ChooseSentence() {
                 break;
             case 10:
                 {
-                    string name;
+                    string foldername;
                     cout << "Enter name of folder you want to save: ";
-                    cin >> name;
-                    name = "BackUpData/" + name;
-                    const char* nameoffolder = name.c_str();
-                    mkdir(nameoffolder);
-                    employeedata.ExportToFile(name + "/EmployeeData.data");
-                    departmentdata.ExportToFile(name + "/DepartmentData.Data");
-                    dependentdata.ExportToFile(name + "/DependentData.data");
-                    worksondata.ExportToFile(name + "/WorksonData.data");
-                    projectdata.ExportToFile(name + "/ProjectData.data");
-                    departmentlocationsdata.ExportToFile(name + "/DepartmentLocationsData.data");
+                    getline(cin,foldername);
+                    SaveFile(foldername);
+                    bool check = true;
+                    vector<string> backupnamearr = GetNameBackUpFile();
+                    for (string temp:backupnamearr) {
+                        if (foldername == temp) {
+                            check = false;
+                            break;
+                        }
+                    }
+                    if (check) {
+                    ofstream backupnamefile("BackUpData/BackUpName.txt",ios::app);
+                    backupnamefile << foldername << endl;
+                    backupnamefile.close();
+                    }
+                }
+                break;
+            case 11:
+                {   
+                    vector<string> backupnamearr = GetNameBackUpFile();
+                    for (int i = 0; i < backupnamearr.size(); i++) {
+                        cout << i << " " << backupnamearr[i] << endl;
+                    }
+                    cout << "Enter ordinal number folder you want to take: ";
+                    int i;
+                    cin >> i; cin.ignore();
+                    BackUpFile(backupnamearr[i]);
                 }
                 break;
             case 0:
@@ -285,10 +348,13 @@ void UIMenu::ChooseSentence() {
 
 void UIMenu::ChooseTable(){
     system("cls");
+    cout << endl << endl << endl;
     bool k = true;
     do {
-        cout << "MANAGEMENT INFORMATION\n";
-        cout << "*************************MENU************************************\n";
+        system("cls");
+        cout << endl << endl << endl;
+        cout << "                    MANAGEMENT INFORMATION\n";
+        cout << "*****************************MENU********************************\n";
         cout << "**  1. Infomation of employees.                                **\n";
         cout << "**  2. Infomation of departments.                              **\n";
         cout << "**  3. Location of departments.                                **\n";
@@ -299,7 +365,7 @@ void UIMenu::ChooseTable(){
         cout << "**  0. Exit.                                                   **\n";
         cout << "*****************************************************************\n";
         int n ;
-        cout << "Your selection : " ; 
+        cout << "Your selection: " ; 
         cin >> n; // To choose the information that you need
         switch(n){
             case 1:
@@ -322,6 +388,7 @@ void UIMenu::ChooseTable(){
                 break;
             case 7:
                 k = false;
+                ChooseSentence();
                 break;
             case 0:
                 exit('0');
@@ -335,6 +402,7 @@ void UIMenu::ChooseTable(){
 void UIMenu::ChooseOpt(int n)
 {
     system("cls");
+    cout << endl << endl << endl;
     bool k = true;
     do {
         cout <<"              EMPLOYEE MANAGEMENT PROGRAM\n";
@@ -347,14 +415,16 @@ void UIMenu::ChooseOpt(int n)
         cout <<"**  0. Exit.                                            **\n";
         cout <<"**********************************************************\n";
         int x;
-        cout <<"Press a number :";
-        cin>>x;
+        cout <<"Press a number: ";
+        cin >> x;
+        cin.ignore();
         switch (x) { 
             case 1:
                 if (n == 1) {
                     Employee employee;
                     cin >> employee;
                     employeedata.Add(employee);
+                    cout << endl;
                     Display(&employeedata);  
                 }
                 else if (n == 2) {
@@ -394,6 +464,7 @@ void UIMenu::ChooseOpt(int n)
                     cout << "Enter the person who you want to edit: ";
                     cin >> id;
                     cout << "Edit the person who you want to edit: "<<endl;
+                    cin.ignore();
                     Employee employee;
                     cin >> employee;
                     employeedata.Edit(employee,id - 1);    
@@ -405,6 +476,7 @@ void UIMenu::ChooseOpt(int n)
                     cout << "Enter the person who you want to edit: ";
                     cin >> id;
                     cout << "Edit the person who you want to edit: "<<endl;
+                    cin.ignore();
                     Department department;
                     cin >> department;                    
                     departmentdata.Edit(department,id - 1);    
@@ -415,6 +487,7 @@ void UIMenu::ChooseOpt(int n)
                     cout << "Enter the person who you want to edit: ";
                     cin >> id;
                     cout << "Edit the person who you want to edit: "<<endl;
+                    cin.ignore();
                     DepartmentLocations departmentlocation;
                     cin >> departmentlocation;
                     departmentlocationsdata.Edit(departmentlocation,id - 1);    
@@ -425,6 +498,7 @@ void UIMenu::ChooseOpt(int n)
                     cout << "Enter the person who you want to edit: ";
                     cin >> id;
                     cout << "Edit the person who you want to edit: "<<endl;
+                    cin.ignore();
                     Project project;
                     cin >> project;
                     projectdata.Edit(project,id - 1);    
@@ -435,6 +509,7 @@ void UIMenu::ChooseOpt(int n)
                     cout << "Enter the person who you want to edit: ";
                     cin >> id;
                     cout << "Edit the person who you want to edit: "<<endl;
+                    cin.ignore();
                     Workson workson;
                     cin >> workson;
                     worksondata.Edit(workson,id - 1);     
@@ -445,6 +520,7 @@ void UIMenu::ChooseOpt(int n)
                     cout << "Enter the person who you want to edit: ";
                     cin >> id;
                     cout << "Edit the person who you want to edit: " <<endl;
+                    cin.ignore();
                     Dependent dependent;
                     cin >> dependent;
                     dependentdata.Edit(dependent,id - 1);     

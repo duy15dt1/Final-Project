@@ -43,6 +43,15 @@ string Department::ToString() {
     return s;
 }
 
+string Department::PrintElement() {
+    string s;
+    s += "Dname: " + Dname + ", ";
+    s += "Dnumber:" + to_string(Dnumber) + ", ";
+    s += "Mgrssn: " + to_string(Mgrssn) + ", ";
+    s += "Mgrstartdate: " + Mgrstartdate + "";
+    return s;
+}
+
 /** @brief Function converts this object to json object.
  *  
  *  Function converts this object to json object.

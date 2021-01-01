@@ -38,6 +38,14 @@ string Workson::ToString() {
     return s;   
 }
 
+string Workson::PrintElement() {
+    string s;
+    s += "Essn: " + to_string(Essn) + ", ";
+    s += "Pno: " + to_string(Pno) + ", ";
+    s += "Hours: " + to_string(Hours) + "";
+    return s;   
+}
+
 /** @brief Function converts this object to json object.
  *  
  *  Function converts this object to json object.

@@ -78,6 +78,27 @@ string Employee::ToString() {
     return s;
 }
 
+string Employee::PrintElement() {
+    string s;
+    s += "Fname: " + Fname + ", ";
+    s += "MInit:" + Minit + ", ";
+    s += "Lname: " + Lname + ", ";
+    s += "SSN: " + to_string(Ssn) + ", ";
+    s += "BDate: " + Bdate + ", ";
+    s += "Adrress: " + Address + ", ";
+    string str = string(1, Sex);
+    s += "Sex: " + str + ", ";
+    s += "Salary: " + to_string(Salary) + ", ";
+    if (Superssn == 0) {
+        s += "SuperSSN: null, ";
+    }
+    else {
+        s += "SuperSSN: " + to_string(Superssn) + ", ";
+    }
+    s += "DNO: " + to_string(Dno) + "";
+    return s;
+}
+
 /** @brief Function converts this object to json object.
  *  
  *  Function converts this object to json object.

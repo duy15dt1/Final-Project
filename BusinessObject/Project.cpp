@@ -42,6 +42,15 @@ string Project::ToString(){
     return s;
 }
 
+string Project::PrintElement(){
+    string s;
+    s += "Pname: " + Pname + ", ";
+    s += "Pnumber: " + to_string(Pnumber) + ", ";
+    s += "Plocation: " + Plocation + ", ";
+    s += "Dnumber: " + to_string(Dnum) + "";
+    return s;
+}
+
 /** @brief Function converts this object to json object.
  *  
  *  Function converts this object to json object.

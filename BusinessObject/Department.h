@@ -40,7 +40,7 @@ public:
 
     //Convert the informations of Department to json type to save file
     json ToJson();
-
+    string PrintElement();
     friend istream& operator >> (istream&, Department&);
 };
 #endif 
