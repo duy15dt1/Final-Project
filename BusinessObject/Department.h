@@ -35,7 +35,7 @@ public:
     int& GetIDMax();
     void IncreaseID();
 
-    //Convert the informations of Department to string type to display to screen
+    //Convert the informations of every member of Department to string type to display to screen
     string ToString();
 
     //Convert the informations of Department to json type to save file

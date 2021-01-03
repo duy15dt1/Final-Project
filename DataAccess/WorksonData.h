@@ -14,17 +14,26 @@ using json = nlohmann::json;
 class WorksonData : public DataBusinessObject {
 private:
     vector <Workson> worksonArr;
+
+    //maxID is the maximum number of member of class Works_on 
+    //after adding, deleting
     int maxID;
 public:
-    //Contructor function of Workson_Data
     WorksonData();
-    //GetMaxId() is a function that get the maximum ID of Workson data
     int GetMaxId();
-    // PushBack(Workson) is a function that push one Workson data in the back of _data vector and return maximun ID of the current _data vector
-    //Get(int i) is a function that get the Workson data at i position of _data vector
+
+    //This function will point to the member of class we want to work with
     Workson& Get(int );
+
+    //This function will get the address of the member 
+    //which we pointed by the function Get() above
     BusinessObject* GetPointer(int);
+
+    //This fucntion will help us get the size of the vector at that time
+    //after deleting or adding memeber
     int GetSize();
+
+    //We modify our data directly by using these fucntions
     void Add(Workson&);
     void Edit(Workson&, int);
     void Delete(int);

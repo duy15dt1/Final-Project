@@ -35,7 +35,7 @@ public:
     int& GetIDMax();
     void IncreaseID();
     
-    //Convert the informations of Project to string type to display to screen
+    //Convert the informations of every member of Project to string type to display to screen
     string ToString();
     string PrintElement();
     //Convert the informations of Project to json type to save file

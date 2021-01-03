@@ -7,14 +7,42 @@ DepartmentLocationsData::DepartmentLocationsData() {
 int DepartmentLocationsData::GetMaxID() {
     return maxID;
 }
-DepartmentLocations& DepartmentLocationsData::Get(int i) {
-    return deptlocationArr[i];
-}
+
 int DepartmentLocationsData::GetSize() {
     return deptlocationArr.size();
 }
+
+//The Get(int i) function will get the data at position i of vector deptlocationArr
+//and the GetPointer() function will get the address of that position
+DepartmentLocations& DepartmentLocationsData::Get(int i) {
+    return deptlocationArr[i];
+}
+
 BusinessObject* DepartmentLocationsData::GetPointer(int i) {
     return &deptlocationArr[i];
+}
+
+//We increae the id in order to point to the new member
+//then using push_back() function to store it at the last of the vector
+void DepartmentLocationsData::Add(DepartmentLocations& deptlocation) {
+    deptlocation.IncreaseID();
+    deptlocationArr.push_back(deptlocation);
+}
+
+//After locating the position of the member we want to edit
+//Overwrite them by the new member
+void DepartmentLocationsData::Edit(DepartmentLocations& deptlocation,int i) {
+    deptlocation.GetID() = deptlocationArr[i].GetID();
+    deptlocationArr[i] = deptlocation;
+}
+
+void DepartmentLocationsData::Delete(int i) {
+    deptlocationArr.erase(deptlocationArr.begin() + i - 1);
+    maxID = deptlocationArr.size();
+    for (int j = i-1; j < maxID; j++){
+        deptlocationArr[j].GetID() = j + 1;
+    }
+    deptlocationArr.back().GetIDMax() = maxID;
 }
 
 void DepartmentLocationsData::Read(string filename) {
@@ -38,24 +66,6 @@ void DepartmentLocationsData::Read(string filename) {
     inFile.close();
 }
 
-void DepartmentLocationsData::Delete(int i) {
-    deptlocationArr.erase(deptlocationArr.begin() + i - 1);
-    maxID = deptlocationArr.size();
-    for (int j = i-1; j < maxID; j++){
-        deptlocationArr[j].GetID() = j + 1;
-    }
-    deptlocationArr.back().GetIDMax() = maxID;
-}
-
-void DepartmentLocationsData::Add(DepartmentLocations& deptlocation) {
-    deptlocation.IncreaseID();
-    deptlocationArr.push_back(deptlocation);
-}
-
-void DepartmentLocationsData::Edit(DepartmentLocations& deptlocation,int i) {
-    deptlocation.GetID() = deptlocationArr[i].GetID();
-    deptlocationArr[i] = deptlocation;
-}
 
 int DepartmentLocationsData::ExportToFile(string filename) {
     ofstream outFile(filename, ios::out);

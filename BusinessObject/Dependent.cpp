@@ -1,6 +1,9 @@
 #include "Dependent.h"
 Dependent::Dependent() {
 }
+
+//The this pointer is an implicit parameter to all member functions
+//Therefore, inside a member function, this may be used to refer to the invoking object
 Dependent::Dependent(int Essn, string DependentName, char Sex, string Bdate, string Relationship) {
     this->Essn = Essn;                    
     this->DependentName = DependentName;          
@@ -76,5 +79,6 @@ json Dependent::ToJson() {
     return j;
 }
 
-//
+//sIdMax is a static variable so we have to set it to 0 every time we want to use it
+//to avoid unexpected issues
 int Dependent::sIDMax = 0;

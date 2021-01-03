@@ -49,7 +49,7 @@ public:
     int& GetIDMax();
     void IncreaseID();
     
-    //Convert the informations of Employee to string type to display to screen
+    //Convert the informations of every member of Employee to string type to display to screen
     string ToString();
 
     //Convert the informations of Employee to json type to save file

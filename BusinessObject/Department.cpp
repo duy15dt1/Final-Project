@@ -1,7 +1,10 @@
 #include "Department.h"
 
 Department::Department() {
-}   
+}
+
+//The this pointer is an implicit parameter to all member functions
+//Therefore, inside a member function, this may be used to refer to the invoking object
 Department::Department(string Dname, int Dnumber, int Mgrssn, string Mgrstartdate) {
     this->Dname = Dname;                 
     this->Dnumber = Dnumber;            
@@ -68,4 +71,6 @@ json Department::ToJson() {
     return j;
 }
 
+//sIdMax is a static variable so we have to set it to 0 every time we want to use it
+//to avoid unexpected issues
 int Department::sIDMax = 0;             

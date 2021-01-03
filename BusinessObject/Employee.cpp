@@ -2,6 +2,9 @@
 
 Employee::Employee() {
 }
+
+//The this pointer is an implicit parameter to all member functions
+//Therefore, inside a member function, this may be used to refer to the invoking object
 Employee::Employee(string Fname, string Minit, string Lname, int Ssn, string Bdate, string Address, char Sex, int Salary, int Superssn, int Dno) {
     this->Fname = Fname;
     this->Minit = Minit;
@@ -121,4 +124,6 @@ json Employee::ToJson() {
     return j;
 }
 
+//sIdMax is a static variable so we have to set it to 0 every time we want to use it
+//to avoid unexpected issues
 int Employee::sIDMax = 0;

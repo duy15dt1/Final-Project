@@ -26,7 +26,7 @@ public:
     //
     int& GetIDMax();
     void IncreaseID();
-    //Convert the informations of Deparment location to string type to display to screen
+    //Convert the informations of every member of Deparment location to string type to display to screen
     json ToJson();
     //Convert the informations of Deparment location to json type to save file
     string ToString();

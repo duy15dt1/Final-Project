@@ -14,13 +14,26 @@ using json = nlohmann::json;
 class DependentData : public DataBusinessObject{
 private:
     vector<Dependent> dependentArr;
+
+    //maxID is the maximum number of member of class Dependent 
+    //after adding, deleting
     int maxId;
 public:
     DependentData();
     int GetMaxId();
+
+    //This function will point to the member of class we want to work with
     Dependent& Get(int);
-    int GetSize();
+
+    //This function will get the address of the member 
+    //which we pointed by the function Get() above
     BusinessObject* GetPointer(int);
+
+    //This fucntion will help us get the size of the vector at that time
+    //after deleting or adding memeber
+    int GetSize();
+
+    //We modify our data directly by using these fucntions
     void Add(Dependent&);
     void Edit(Dependent&, int);
     void Delete(int);

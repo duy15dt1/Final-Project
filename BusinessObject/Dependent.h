@@ -37,7 +37,7 @@ public:
     int& GetIDMax();
     void IncreaseID();
 
-    //Convert the informations of Dependent to string type to display to screen
+    //Convert the informations of every member of Dependent to string type to display to screen
     string ToString();
 
     //Convert the informations of Dependent to json type to save file
