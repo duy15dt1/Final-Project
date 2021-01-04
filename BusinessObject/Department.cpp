@@ -37,14 +37,6 @@ void Department::IncreaseID() {
  *  Example: 
  *  {Dname: Research, Dnumber: 5, Mgrssn: 333445555, Mgrstartdate: 1988-05-22}
  */
-string Department::ToString() {
-    string s;
-    s += "{Dname: " + Dname + ",";
-    s += "Dnumber:" + to_string(Dnumber) + ",";
-    s += "Mgrssn: " + to_string(Mgrssn) + ",";
-    s += "Mgrstartdate: " + Mgrstartdate + "}";
-    return s;
-}
 
 string Department::PrintElement() {
     string s;

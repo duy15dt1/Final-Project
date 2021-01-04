@@ -1,12 +1,7 @@
 #include "DependentData.h"
 
 DependentData::DependentData() {
-    maxId = 0;
     dependentArr.resize(0);
-}
-
-int DependentData::GetMaxId() {
-    return maxId;
 }
 
 int DependentData::GetSize(){
@@ -38,18 +33,16 @@ void DependentData::Edit(Dependent& dependent,int i) {
 
 void DependentData::Delete(int i) {
     dependentArr.erase(dependentArr.begin() + i - 1);
-    maxId = dependentArr.size();
-    for (int j = i-1; j < maxId; j++){
+    for (int j = i-1; j < dependentArr.size(); j++){
         dependentArr[j].GetID() = j + 1;
     }
-    dependentArr.back().GetIDMax() = maxId;
+    dependentArr.back().GetIDMax() = dependentArr.size();
 }
 
 void DependentData::Read(string filename) {
     if (dependentArr.size() != 0) {
         dependentArr.back().GetIDMax() = 0;
     }
-    maxId = 0;
     dependentArr.resize(0);
     ifstream inFile(filename);
     const int maxSize = 255;

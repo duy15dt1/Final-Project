@@ -15,12 +15,8 @@ class DependentData : public DataBusinessObject{
 private:
     vector<Dependent> dependentArr;
 
-    //maxID is the maximum number of member of class Dependent 
-    //after adding, deleting
-    int maxId;
 public:
     DependentData();
-    int GetMaxId();
 
     //This function will point to the member of class we want to work with
     Dependent& Get(int);

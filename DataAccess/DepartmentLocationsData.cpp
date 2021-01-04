@@ -2,10 +2,6 @@
 
 DepartmentLocationsData::DepartmentLocationsData() {
     deptlocationArr.resize(0);
-    maxID = 0;
-}
-int DepartmentLocationsData::GetMaxID() {
-    return maxID;
 }
 
 int DepartmentLocationsData::GetSize() {
@@ -38,18 +34,16 @@ void DepartmentLocationsData::Edit(DepartmentLocations& deptlocation,int i) {
 
 void DepartmentLocationsData::Delete(int i) {
     deptlocationArr.erase(deptlocationArr.begin() + i - 1);
-    maxID = deptlocationArr.size();
-    for (int j = i-1; j < maxID; j++){
+    for (int j = i-1; j < deptlocationArr.size(); j++){
         deptlocationArr[j].GetID() = j + 1;
     }
-    deptlocationArr.back().GetIDMax() = maxID;
+    deptlocationArr.back().GetIDMax() = deptlocationArr.size();
 }
 
 void DepartmentLocationsData::Read(string filename) {
     if (deptlocationArr.size() != 0) {
         deptlocationArr.back().GetIDMax() = 0;
     }
-    maxID = 0;
     deptlocationArr.resize(0);
     ifstream inFile(filename);
     const int maxSize = 255;

@@ -6,12 +6,7 @@ using namespace std;
 using json = nlohmann::json;
 
 WorksonData::WorksonData(){
-    maxID = 0;
     worksonArr.resize(0);
-}
-
-int WorksonData:: GetMaxId() {
-    return maxID;
 }
 
 int WorksonData::GetSize() {
@@ -43,18 +38,16 @@ void WorksonData::Edit(Workson& workson,int i) {
 
 void WorksonData::Delete(int i){
     worksonArr.erase(worksonArr.begin()+i-1);
-    maxID = worksonArr.size();
-    for (int j = i-1; j < maxID ; j++ ){
+    for (int j = i-1; j < worksonArr.size() ; j++ ){
         worksonArr[j].GetID() = j + 1; 
     } 
-    worksonArr.back().GetIDMax() = maxID;
+    worksonArr.back().GetIDMax() = worksonArr.size();
 }
 
 void WorksonData::Read(string filename) {
     if(worksonArr.size() != 0){
         worksonArr.back().GetIDMax() = 0;
     }
-    maxID = 0;
     worksonArr.resize(0);
     ifstream inFile(filename);
     const int maxSize = 255;

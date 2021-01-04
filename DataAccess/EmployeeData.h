@@ -13,13 +13,8 @@ using json = nlohmann::json;
 class EmployeeData : public DataBusinessObject {
 private:
     vector<Employee> employeeArr;
-
-    //maxID is the maximum number of member of class Employee
-    //after adding, deleting
-    int maxID;
 public:
     EmployeeData();
-    int GetMaxID();
 
     //This function will point to the member of class we want to work with
     Employee& Get(int);

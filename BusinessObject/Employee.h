@@ -50,11 +50,10 @@ public:
     void IncreaseID();
     
     //Convert the informations of every member of Employee to string type to display to screen
-    string ToString();
+    string PrintElement();
 
     //Convert the informations of Employee to json type to save file
     json ToJson();
-    string PrintElement();
     friend istream& operator >> (istream&, Employee&);
 };
 

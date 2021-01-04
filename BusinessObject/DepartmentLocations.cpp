@@ -22,12 +22,6 @@ void DepartmentLocations::IncreaseID() {
  *  Example: 
  *  {Dnumber: 1, Dlocation: Houston}
  */
-string DepartmentLocations::ToString() {
-    string s;
-    s += "{Dnumber: " + to_string(Dnumber) + ", ";
-    s += "Dlocation: " + Dlocation + "}";
-    return s;
-}
 
 string DepartmentLocations::PrintElement() {
     string s;

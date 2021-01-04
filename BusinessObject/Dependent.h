@@ -38,11 +38,9 @@ public:
     void IncreaseID();
 
     //Convert the informations of every member of Dependent to string type to display to screen
-    string ToString();
-
+    string PrintElement();
     //Convert the informations of Dependent to json type to save file
     json ToJson();
-    string PrintElement();
     friend istream& operator >> (istream& is, Dependent& dep);
 };
 #endif

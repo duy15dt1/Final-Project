@@ -18,7 +18,6 @@ public:
     //We declare these function as virtual function because we want to
     //redefined (overidden) them in derived class to archive poymorphism
     //We will explain how to use these in derived class later
-    virtual string ToString() = 0;
     virtual json ToJson() = 0;
     virtual string PrintElement() = 0;
 };

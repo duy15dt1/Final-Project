@@ -6,13 +6,9 @@ using namespace std;
 using json = nlohmann::json;
 
 ProjectData::ProjectData() {
-    maxID = 0;
     projectArr.resize(0);
 }
 
-int ProjectData::GetMaxID(){
-    return maxID;
-}
 
 int ProjectData::GetSize() {
     return projectArr.size();
@@ -44,18 +40,16 @@ void ProjectData::Edit(Project& project,int i) {
 
 void ProjectData::Delete(int i) {
     projectArr.erase(projectArr.begin() + i - 1);
-    maxID = projectArr.size();
-    for (int j = i-1; j < maxID; j++){
+    for (int j = i-1; j < projectArr.size(); j++){
         projectArr[j].GetID() = j + 1;
     }
-    projectArr.back().GetIDMax() = maxID;
+    projectArr.back().GetIDMax() = projectArr.size();
 }
 
 void ProjectData::Read(string filename) {
     if (projectArr.size() != 0) {
         projectArr.back().GetIDMax() = 0;
     }
-    maxID = 0;
     projectArr.resize(0);
     ifstream inFile(filename);
     const int maxSize = 255;

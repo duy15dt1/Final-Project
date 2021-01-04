@@ -65,21 +65,6 @@ void Employee::IncreaseID() {
  *  Example: 
  *  {Fname: John, Minit: B, Lname: Smith, Ssn: 123456789, Bdate: 1965-01-09, Address: 731 Fondren, Houston, TX, Sex: N, Salary: 30000, Superssn: 333445555, Dno: 5}
  */
-string Employee::ToString() {
-    string s;
-    s += "{Fname: " + Fname + ", ";
-    s += "MInit:" + Minit + ", ";
-    s += "Lname: " + Lname + ", ";
-    s += "SSN: " + to_string(Ssn) + ", ";
-    s += "BDate: " + Bdate + ", ";
-    s += "Adrress: " + Address + ", ";
-    string str = string(1, Sex);
-    s += "Sex: " + str + ", ";
-    s += "Salary: " + to_string(Salary) + ", ";
-    s += "SuperSSN: " + to_string(Superssn) + ", ";
-    s += "DNO: " + to_string(Dno) + "}";
-    return s;
-}
 
 string Employee::PrintElement() {
     string s;

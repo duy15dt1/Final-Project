@@ -35,15 +35,6 @@ void Project::IncreaseID(){
  *  Example: 
  *  {Pname: ProductX, Pnumber: 1, Plocation: Bellaire, Dnum: 5}
  */
-string Project::ToString(){
-    string s;
-    s += "{Pname: " + Pname + ", ";
-    s += "Pnumber: " + to_string(Pnumber) + ", ";
-    s += "Plocation: " + Plocation + ", ";
-    s += "Dnumber: " + to_string(Dnum) + "}";
-    return s;
-}
-
 string Project::PrintElement(){
     string s;
     s += "Pname: " + Pname + ", ";

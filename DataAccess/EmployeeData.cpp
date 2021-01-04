@@ -7,7 +7,6 @@ using namespace std;
 using json = nlohmann::json;
 
 EmployeeData::EmployeeData(){
-    maxID = 0;
     employeeArr.resize(0);
 }
 
@@ -42,18 +41,16 @@ void EmployeeData::Edit(Employee& employee,int i){
 
 void EmployeeData::Delete(int i) {
     employeeArr.erase(employeeArr.begin() + i - 1);
-    maxID = employeeArr.size();
-    for (int j = i-1; j < maxID; j++){
+    for (int j = i-1; j < employeeArr.size(); j++){
         employeeArr[j].GetID() = j + 1;
     }
-    employeeArr.back().GetIDMax() = maxID;
+    employeeArr.back().GetIDMax() = employeeArr.size();
 }
 
 void EmployeeData::Read(string filename){
     if (employeeArr.size() != 0) {
         employeeArr.back().GetIDMax() = 0;
     }
-    maxID = 0;
     employeeArr.resize(0);
     ifstream inFile(filename);
     const int maxSize = 255;

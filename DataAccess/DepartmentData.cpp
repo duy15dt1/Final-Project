@@ -1,12 +1,8 @@
 #include "DepartmentData.h"
 DepartmentData::DepartmentData() {
-    maxID = 0;
     departmentArr.resize(0);
 }
 
-int DepartmentData::GetMaxID() {
-    return maxID;
-}
 //The Get(int i) function will get the data at position i of vector departmentArr
 //and the GetPointer() function will get the address of that position
 Department& DepartmentData::Get(int i) {
@@ -37,18 +33,16 @@ void DepartmentData::Edit(Department& deparment,int i) {
 
 void DepartmentData::Delete(int i) {
     departmentArr.erase(departmentArr.begin()+i-1);
-    maxID = departmentArr.size();
-    for (int j = i-1; j < maxID ; j++ ){
+    for (int j = i-1; j < departmentArr.size(); j++ ){
         departmentArr[j].GetID() = j + 1; 
     } 
-    departmentArr.back().GetIDMax() = maxID;
+    departmentArr.back().GetIDMax() = departmentArr.size();
 }
 
 void DepartmentData::Read(string filename) {
     if(departmentArr.size() != 0 ){
         departmentArr.back().GetIDMax() = 0;
     }
-    maxID = 0;
     departmentArr.resize(0);
     ifstream inFile(filename);
     const int maxSize = 255;

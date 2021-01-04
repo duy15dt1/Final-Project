@@ -36,11 +36,9 @@ public:
     void IncreaseID();
 
     //Convert the informations of every member of Department to string type to display to screen
-    string ToString();
-
+    string PrintElement();
     //Convert the informations of Department to json type to save file
     json ToJson();
-    string PrintElement();
     friend istream& operator >> (istream&, Department&);
 };
 #endif 

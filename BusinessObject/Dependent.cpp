@@ -38,17 +38,6 @@ void Dependent::IncreaseID() {
  *  Example: 
  *  {Essn: 333445555, Dependent_name: Alice, Sex: F, Bdate: 1986-04-05, Relationship: DAUGHTER}
  */
-string Dependent::ToString() {
-    string s;
-    s += "{Essn: " + to_string(Essn) + ", ";
-    s += "Dependent name: " + DependentName + ", ";
-    //Sex is type char so we convert to string then get the first character
-    string str = string(1,Sex); 
-    s += "Sex: " + str + ", ";
-    s += "Bdate: " + Bdate + ", ";
-    s += "Relationship: " + Relationship +"}";
-    return s;
-}
 
 string Dependent::PrintElement() {
     string s;

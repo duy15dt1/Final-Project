@@ -14,13 +14,8 @@ using json = nlohmann::json;
 class WorksonData : public DataBusinessObject {
 private:
     vector <Workson> worksonArr;
-
-    //maxID is the maximum number of member of class Works_on 
-    //after adding, deleting
-    int maxID;
 public:
     WorksonData();
-    int GetMaxId();
 
     //This function will point to the member of class we want to work with
     Workson& Get(int );

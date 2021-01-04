@@ -32,13 +32,6 @@ void Workson::IncreaseID() {
  *  Example: 
  *  {Essn: 123456789, Pno: 1, Hours: 32.5}
  */
-string Workson::ToString() {
-    string s;
-    s += "{Essn: " + to_string(Essn) + ",";
-    s += "Pno: " + to_string(Pno) + ",";
-    s += "Hours: " + to_string(Hours) + "}";
-    return s;   
-}
 
 string Workson::PrintElement() {
     string s;
