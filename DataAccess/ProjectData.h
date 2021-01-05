@@ -32,6 +32,7 @@ public:
     void Add(Project&);
     void Edit(Project&, int);
     void Delete(int);
+    // Function will help us to read the data
     void Read(string);
     int ExportToFile(string);
 };

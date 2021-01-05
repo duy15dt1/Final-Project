@@ -22,25 +22,17 @@ istream& operator >> (istream& is, DepartmentLocations& departmentLocations) {
 }
 
 istream& operator >> (istream& is, Department& department){
-    //    Name of department
     cout << "Name of department: "; getline(is, department.Dname); 
-    //    Number of department 
     cout << "Number of department: "; is >> department.Dnumber;
-    //    Social security number of manager 
     cout << "Social security number of manager: "; is >> department.Mgrssn;
-    //    Department management start date of manager
     is.ignore();
     cout << "Department management start date of manager: "; getline(is, department.Mgrstartdate);
     return is;
 }
 istream& operator >> (istream& is, Workson& worskon){
-    //    Social security number of employee
     cout << "Social security number of employee: "; is >> worskon.Essn;
-    //    Number of project 
     cout << "Number of project: "; is >> worskon.Pno;
-    //    Overtime hours
     cout << "Overtime hours of employee: ";is >> worskon.Hours;
-    //    Overtime hours
     return is;
 }
 

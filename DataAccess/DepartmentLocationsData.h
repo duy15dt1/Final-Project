@@ -32,6 +32,7 @@ public:
     void Add(DepartmentLocations&);
     void Edit(DepartmentLocations&, int);
     void Delete(int);
+    // Function will help us to read the data
     void Read(string);
     int ExportToFile(string);
 };

@@ -13,10 +13,10 @@ using namespace std;
 // Overloading extraction operator 
 istream& operator >> (istream& , Employee& );
 istream& operator >> (istream& , DepartmentLocations& );
-istream& operator >> (istream& is, Department& d);
-istream& operator >> (istream& is, Workson& d);
-istream& operator >> (istream& is, Dependent& dep);
-istream& operator >> (istream& is, Project& pro);
+istream& operator >> (istream& , Department& );
+istream& operator >> (istream& , Workson& );
+istream& operator >> (istream& , Dependent& );
+istream& operator >> (istream& , Project& );
 // Overloading insertion operator 
 
 #endif

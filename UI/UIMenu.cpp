@@ -1,5 +1,13 @@
 #include "UIMenu.h"
 #include <iomanip>
+
+/** @brief Function describes the ability to display data
+ *  
+ *  Function describes the ability to display data.
+ *  The function as the parameter passed is the pointer variable DataBusinessObject
+ *  After looping through each element, it displays the PrintElement() of that element
+ *  Example: ID: 1, "Essn":123456789,"Pno":1,"Hours":32.5
+ */
 void UIMenu::Display(DataBusinessObject* databusinessobject) {
     cout << endl;
     for (int i = 0; i < databusinessobject->GetSize(); i++) {
@@ -9,6 +17,12 @@ void UIMenu::Display(DataBusinessObject* databusinessobject) {
     cout << endl << endl;
 }
 
+/** @brief The function shows all employees supervised by the person entered from the keyboard
+ * function as the parameter is the string variable
+ * After looping through each element at class EmployeeData, we get ssn variable
+ * we check, if ssn = -1 return There is no name you typed, please type again
+ * else after looting through each element at class EmployeeData, we get name of all employees supervised
+ */
 void UIMenu::DisplayAllEmpUnderSupvr(string name) {
     int ssn = -1;
     cout << "List of employees supervised by " << name << ": " << endl;
@@ -35,6 +49,13 @@ void UIMenu::DisplayAllEmpUnderSupvr(string name) {
     cout << endl << endl;
 }
 
+/** @brief Function display all employee has dependent
+ * @return name of employee has daughter or son
+ * using a for loop in class Dependent to locate the employee by Essn
+ * using another fo loop in class Employee
+ * if the ssn in class Dependent similar to the essn in class Employee
+ * then print the name of that employee who has a daughter or son
+*/
 void UIMenu::DisplayAllEmpHasChild() {
     int ssn = 0;
     cout << "List of employees that dependent is daughter or son: " << endl;
@@ -54,6 +75,16 @@ void UIMenu::DisplayAllEmpHasChild() {
     cout << endl << endl;
 }
 
+/** @brief Function calculate the total work hours of all employee in a project.
+ *  user will enter the project number.
+ *  @return the total work hours
+ *  sum is the variable to contain the total work hours.
+ *  projectdata.GetSize() return the number of member in the class Project.
+ *  Using the for loop in class Project to locate the project number which coincide to the number we entered.
+ *  If the project number is the same then display name of that project.
+ *  Using the second for loop in class Works_on to sum the project hours.
+ *  If the project number matches nothing, ask the user to try again.
+*/
 void UIMenu::TotalWorkHours(int& n)
 {
     double sum = 0;
@@ -77,6 +108,13 @@ void UIMenu::TotalWorkHours(int& n)
     cout << endl << endl;
 }
 
+/** @brief Function display all employee don't take part in project.
+ *  Take employee's SSN in employee sheet to compare with employee's SSN of Wokson sheet.
+ *  If not found, display employee information.
+ *  @return no return
+ *  Example a employee's SSN is 111111111, but it's not in work sheet. 
+ *  So the function will display information of employee has 111111111 SSN
+ */
 void UIMenu::DisplayAllEmpNoProject() {
     bool k = true;
     cout << "List of employees who are not working on any project :" << endl;
@@ -93,6 +131,13 @@ void UIMenu::DisplayAllEmpNoProject() {
     cout << endl;
 }
 
+/** @brief Function display average salary of all employees in department
+ * Function display average salary of all employees in department
+ * Function as the parameter is string variable
+ * After loop through each element at class DepartmentData, we get pnumber variable
+ * We check, if pnumber = 0, return there is no department you typed, please type again.
+ * else we loop through each element at class EmployeeData, we get average variable
+*/
 void UIMenu::DisplayAverageSalaryEmpInDepartment(string& departmentname) {
     int pnumber = 0;
     for (int i = 0; i < departmentdata.GetSize(); i++) {
@@ -119,6 +164,13 @@ void UIMenu::DisplayAverageSalaryEmpInDepartment(string& departmentname) {
     cout << endl << endl;
 }
 
+/** @brief fucntion calculate the average income of employee by sex
+ *  user will enter the sex
+ *  @return average income corerresponding with the sex
+ *  variable count contain the number of male of female
+ *  Using a for loop in class Employee locate the sex coincide to the sex we entered
+ *  if the sex is the same then increase the count by 1 then add the Salary of that employee
+*/
 void UIMenu::AverageIncomeBySex(char& s){
         int count = 0;
         float TotalIncome = 0;
@@ -132,6 +184,13 @@ void UIMenu::AverageIncomeBySex(char& s){
         cout << endl;
 }
 
+/** @brief Function display the last name of all manager don't have dependent.
+ *  Take manager's SSN in department sheet to compare with employee's SSN of dependent sheet.
+ *  If not found, get the last name of manager in employee sheet then display it.
+ *  @return no return
+ *  Example a manager's SSN is 888665555, but it's not in dependent sheet. 
+ *  So the function will get the last name of 888665555 in employee sheet (Borg) and display it.
+ */
 void UIMenu:: DisplayManaNoDependent() {
     bool k = true;
     for (int i = 0; i < departmentdata.GetSize(); i++) {
@@ -154,6 +213,12 @@ void UIMenu:: DisplayManaNoDependent() {
     cout << endl;
 }
 
+/** @brief function display all employee in department, project and min hours entered form the keyboard
+ * function display all employee in department, project and min hours entered form the keyboard
+ * Function as the parameter is two int variable and string variable
+ * After loop through each element at class ProjectData, we get pnumber variable
+ * After loop through each element at class WorksonData and EmployeeData, we return name all employee
+*/
 void UIMenu::DisplayAllEmpInDepartment(int& departmentnumber, string& projectname, int& minhours) {
     int pnumber = 0, essn = 0;
     for (int i = 0; i < projectdata.GetSize(); i++) {
@@ -184,6 +249,13 @@ void UIMenu::DisplayAllEmpInDepartment(int& departmentnumber, string& projectnam
     cout << endl;
 }
 
+/** @brief Function save the file datas of work.
+ *  Save datas into "BackUpData/foldername" path with foldername is string entered from keyboard by user.
+ *  New folder will be created in BackUpData folder.
+ *  Then ExportToFile method will be called and export the file datas into new folder.
+ *  @return no return
+ *  Example  Enter the foldername is "30/04/1975" then new folder is created in BackUpData and data will be saved into it.
+ */
 void UIMenu::SaveFile(string& foldername) {
     const char* pathname = ("BackUpData/" + foldername).c_str();
     mkdir(pathname);
@@ -194,6 +266,11 @@ void UIMenu::SaveFile(string& foldername) {
     projectdata.ExportToFile("BackUpData/" + foldername + "/ProjectData.data");
     departmentlocationsdata.ExportToFile("BackUpData/" + foldername + "/DepartmentLocationsData.data");
 }
+
+/** @brief Function get the saved folder name .
+ *  Get the name folder in "BackUpData/BackUpName.txt" and save them in a string vector.
+ *  @return string vector 
+ */
 vector<string> UIMenu::GetNameBackUpFile() {
     ifstream backupname("BackUpData/BackUpName.txt");
     vector<string> backupnamearr;
@@ -204,6 +281,12 @@ vector<string> UIMenu::GetNameBackUpFile() {
     backupname.close();
     return backupnamearr;
 }
+
+/** @brief Function restore the file datas from folder saved.
+ *  Restore datas from "BackUpData/foldername" path with foldername is string entered from keyboard by user.
+ *  If there isn't foldername, function will not read anything.
+ *  @return no return
+ */
 void UIMenu::BackUpFile(string& foldername) {
     employeedata.Read("BackUpData/" + foldername + "/EmployeeData.data");
     departmentdata.Read("BackUpData/" + foldername + "/DepartmentData.Data");

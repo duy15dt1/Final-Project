@@ -20,9 +20,19 @@ private:
     ProjectData projectdata;
 public:
     void Display(DataBusinessObject*);
+
+    //There are 10 tasks to do in this project
+    //Using this fucntion to choose which tasks we want the program to process
     void ChooseSentence();
+
+    //After choosing the task, we use this fucntion 
+    //to choose the class we want to modify the data
     void ChooseTable();
+
+    //Using this fucntion to Add/Edit/Delete/Read the data of the class we already chose
     void ChooseOpt(int n);
+
+
     void DisplayAllEmpUnderSupvr(string);
     void DisplayAllEmpHasChild();
     void DisplayAverageSalaryEmpInDepartment(string&);
