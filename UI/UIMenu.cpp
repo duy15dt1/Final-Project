@@ -299,8 +299,8 @@ void UIMenu::BackUpFile(string& foldername) {
 
 void UIMenu::ChooseSentence() {
     system("cls");
-    cout << endl << endl << endl;
     do {
+        cout << endl << endl << endl;
         cout << "                                      EMPLOYEE MANAGEMENT PROGRAM\n";
         cout << "**********************************************MENU*************************************************************\n";
         cout << "**  1.  Add/Eddit/Delete/Read management infomation.                                                         **\n";
@@ -444,6 +444,7 @@ void UIMenu::ChooseSentence() {
                     Display(&departmentlocationsdata);
 
                 }
+
                 break;
             case 0:
                 exit('0');
@@ -452,6 +453,10 @@ void UIMenu::ChooseSentence() {
                 cout << "Your choice is wrong, please try again: ";
                 break;
             
+        }
+        if (k != 0) {
+            system("pause");
+            system("cls");
         }
     } while(1);
 }
@@ -512,9 +517,9 @@ void UIMenu::ChooseTable(){
 void UIMenu::ChooseOpt(int n)
 {
     system("cls");
-    cout << endl << endl << endl;
     bool k = true;
     do {
+        cout << endl << endl << endl;
         cout <<"              EMPLOYEE MANAGEMENT PROGRAM\n";
         cout <<"*************************MENU*****************************\n";
         cout <<"**  1. Add information.                                 **\n";
@@ -720,6 +725,10 @@ void UIMenu::ChooseOpt(int n)
                 system("cls");
                 cout << "Your choice is wrong, please try again: ";
                 break;
+        }
+        if (k != 0 && k != 5) {
+            system("pause");
+            system("cls");
         } 
     } while(k);
 }
